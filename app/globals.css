@@ -6743,3 +6743,35 @@ h2::after {
     padding: 12px 8px 18px !important;
   }
 }
+
+
+/* Final project backdrop: one continuous surface; glass only behind photos */
+.about-section {
+  padding-bottom: 8px !important;
+}
+
+.section-concrete {
+  padding-top: 8px !important;
+}
+
+.section-concrete .work-projects {
+  background: #D8CBB8 !important;
+  border-radius: 18px !important;
+}
+
+/* Keep the translucent layer limited to the photo carousel and make it subtler */
+.work-projects .projects-carousel-wrap::before {
+  background: rgba(255,255,255,.14) !important;
+  border-color: rgba(255,255,255,.28) !important;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+@media (max-width: 560px) {
+  .about-section {
+    padding-bottom: 6px !important;
+  }
+  .section-concrete {
+    padding-top: 6px !important;
+  }
+}
