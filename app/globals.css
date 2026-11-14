@@ -5573,3 +5573,219 @@ h2::after {
     top: 84px !important;
   }
 }
+
+
+/* BARTAR HEADER — clean Turner-inspired white navigation. */
+.site-header,
+.site-header.is-solid {
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: 98px !important;
+  min-height: 98px !important;
+  padding: 0 4.5% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 30px !important;
+  background: #fff !important;
+  background-color: #fff !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(30,30,30,.10) !important;
+  border-radius: 0 !important;
+  box-shadow: 0 3px 18px rgba(0,0,0,.055) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  transition: transform .46s cubic-bezier(.22,.75,.25,1), background-color .25s ease, box-shadow .25s ease !important;
+  will-change: transform;
+}
+.site-header.is-hidden {
+  transform: translateY(-105%) !important;
+  pointer-events: none !important;
+}
+.site-header:not(.is-hidden) {
+  transform: translateY(0) !important;
+}
+.site-header .brand-capsule,
+.site-header.is-solid .brand-capsule {
+  order: 1 !important;
+  flex: 0 0 auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.site-header .brand-capsule .brand-logo,
+.site-header.is-solid .brand-capsule .brand-logo {
+  width: clamp(190px, 17vw, 245px) !important;
+  height: 94px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.site-header .nav-capsule,
+.site-header.is-solid .nav-capsule {
+  order: 2 !important;
+  min-width: 0 !important;
+  min-height: 98px !important;
+  height: 98px !important;
+  padding: 0 !important;
+  margin: 0 auto 0 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: clamp(58px, 6.2vw, 94px) !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateX(-72px) !important;
+}
+.site-header .nav-link,
+.site-header.is-solid .nav-link,
+.site-header .nav-link span,
+.site-header.is-solid .nav-link span {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 15px 0 !important;
+  color: #222 !important;
+  -webkit-text-fill-color: #222 !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  text-shadow: none !important;
+  transition: color .25s ease !important;
+}
+.site-header .nav-link::after,
+.site-header.is-solid .nav-link::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 5px !important;
+  width: 0 !important;
+  height: 2px !important;
+  margin: 0 auto !important;
+  background: #A88755 !important;
+  transition: width .3s cubic-bezier(.2,.7,.2,1) !important;
+}
+.site-header .nav-link:hover::after,
+.site-header .nav-link.active::after,
+.site-header.is-solid .nav-link:hover::after,
+.site-header.is-solid .nav-link.active::after {
+  width: 100% !important;
+}
+.site-header .nav-link:hover,
+.site-header .nav-link.active,
+.site-header.is-solid .nav-link:hover,
+.site-header.is-solid .nav-link.active {
+  color: #A88755 !important;
+  -webkit-text-fill-color: #A88755 !important;
+}
+.site-header .nav-menu-mark,
+.site-header.is-solid .nav-menu-mark {
+  display: inline-flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: 3px !important;
+  width: 15px !important;
+  height: 14px !important;
+  margin-inline-start: 2px !important;
+}
+.site-header .nav-menu-mark i,
+.site-header.is-solid .nav-menu-mark i {
+  display: block !important;
+  width: 14px !important;
+  height: 1.5px !important;
+  background: #8b704c !important;
+  transition: width .25s ease, transform .25s ease !important;
+}
+.site-header .nav-menu-mark i:nth-child(2) { width: 10px !important; }
+.site-header .nav-link:hover .nav-menu-mark i:nth-child(2),
+.site-header .nav-link.active .nav-menu-mark i:nth-child(2) { width: 14px !important; }
+.site-header .nav-link:hover .nav-menu-mark i:nth-child(3),
+.site-header .nav-link.active .nav-menu-mark i:nth-child(3) { width: 8px !important; }
+.site-header .theme-toggle,
+.site-header.is-solid .theme-toggle {
+  color: #222 !important;
+  -webkit-text-fill-color: #222 !important;
+  margin-inline-start: 18px !important;
+}
+.site-header .mega-menu,
+.site-header.is-solid .mega-menu {
+  top: 98px !important;
+}
+@media (max-width: 1100px) {
+  .site-header,
+  .site-header.is-solid {
+    padding-inline: 24px !important;
+    height: 86px !important;
+    min-height: 86px !important;
+  }
+  .site-header .brand-capsule .brand-logo,
+  .site-header.is-solid .brand-capsule .brand-logo {
+    width: 170px !important;
+    height: 82px !important;
+  }
+  .site-header .nav-capsule,
+  .site-header.is-solid .nav-capsule {
+    min-height: 86px !important;
+    height: 86px !important;
+    gap: clamp(22px, 3.2vw, 42px) !important;
+    transform: none !important;
+  }
+}
+@media (max-width: 640px) {
+  .site-header,
+  .site-header.is-solid {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 7px 14px !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0 12px !important;
+  }
+  .site-header .brand-capsule,
+  .site-header.is-solid .brand-capsule {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  .site-header .brand-capsule .brand-logo,
+  .site-header.is-solid .brand-capsule .brand-logo {
+    width: 130px !important;
+    height: 56px !important;
+  }
+  .site-header .nav-capsule,
+  .site-header.is-solid .nav-capsule {
+    width: 100% !important;
+    min-height: 38px !important;
+    height: 38px !important;
+    justify-content: center !important;
+    gap: clamp(12px, 3vw, 20px) !important;
+    transform: none !important;
+    margin: 0 !important;
+  }
+  .site-header .nav-link,
+  .site-header.is-solid .nav-link {
+    font-size: 11px !important;
+    padding: 7px 0 !important;
+  }
+  .site-header .mega-menu,
+  .site-header.is-solid .mega-menu {
+    top: 98px !important;
+  }
+}
