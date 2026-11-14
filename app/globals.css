@@ -6883,3 +6883,39 @@ h2::after {
   background: #F7F4EE !important;
   color: #263B48 !important;
 }
+
+
+/* Compact Services section: reduce its overall vertical height */
+.section-concrete .work-services {
+  padding-top: 18px !important;
+  padding-bottom: 20px !important;
+}
+.section-concrete .services-panel {
+  padding: 20px 26px 18px !important;
+  border-radius: 20px !important;
+}
+.section-concrete .services-head {
+  margin-bottom: 14px !important;
+}
+.section-concrete .services-head p {
+  margin-top: 7px !important;
+}
+.section-concrete .services-image {
+  margin-bottom: 12px !important;
+  aspect-ratio: 16 / 5 !important;
+}
+.section-concrete .service-table {
+  gap: 5px !important;
+}
+.section-concrete .service-row-button {
+  padding: 10px 14px !important;
+}
+.section-concrete .service-row-description {
+  padding-bottom: 10px !important;
+}
+@media (max-width: 900px) {
+  .section-concrete .work-services {
+    padding-top: 16px !important;
+    padding-bottom: 18px !important;
+  }
+}
