@@ -5898,3 +5898,93 @@ h2::after {
   color: #a88755 !important;
   -webkit-text-fill-color: #a88755 !important;
 }
+
+
+/* Header navigation: labels in one row, with a single hamburger at the end. */
+.site-header .header-inline-nav {
+  order: 2 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: clamp(24px, 3.2vw, 48px) !important;
+  margin-inline-start: auto !important;
+  margin-inline-end: 28px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+.site-header .header-inline-link {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 44px !important;
+  padding: 8px 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #222 !important;
+  -webkit-text-fill-color: #222 !important;
+  font-family: inherit !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: color .25s ease !important;
+}
+.site-header .header-inline-link::after {
+  content: "" !important;
+  position: absolute !important;
+  right: 0 !important;
+  bottom: 3px !important;
+  width: 0 !important;
+  height: 2px !important;
+  background: #A88755 !important;
+  transition: width .28s ease !important;
+}
+.site-header .header-inline-link:hover,
+.site-header .header-inline-link.active {
+  color: #A88755 !important;
+  -webkit-text-fill-color: #A88755 !important;
+}
+.site-header .header-inline-link:hover::after,
+.site-header .header-inline-link.active::after { width: 100% !important; }
+.site-header .header-inline-nav .header-menu-toggle {
+  order: 5 !important;
+  flex: 0 0 42px !important;
+  margin: 0 4px 0 0 !important;
+}
+.site-header .header-drawer { z-index: 10020 !important; }
+@media (max-width: 900px) {
+  .site-header .header-inline-nav { gap: clamp(12px, 2vw, 22px) !important; margin-inline-end: 8px !important; }
+  .site-header .header-inline-link { font-size: 13px !important; }
+}
+@media (max-width: 640px) {
+  .site-header, .site-header.is-solid {
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    padding-inline: 10px !important;
+    gap: 8px !important;
+  }
+  .site-header .brand-capsule { flex: 0 0 auto !important; width: auto !important; }
+  .site-header .brand-capsule .brand-logo { width: 105px !important; height: 52px !important; }
+  .site-header .header-inline-nav {
+    width: auto !important;
+    flex: 1 1 auto !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    margin: 0 !important;
+  }
+  .site-header .header-inline-link { font-size: 10px !important; min-height: 36px !important; }
+  .site-header .header-inline-nav .header-menu-toggle {
+    flex: 0 0 34px !important;
+    width: 34px !important;
+    height: 36px !important;
+    padding-inline: 4px !important;
+  }
+  .site-header .header-inline-nav .header-menu-toggle span { width: 23px !important; }
+  .site-header .header-inline-nav .header-menu-toggle span:nth-child(2) { width: 16px !important; }
+}
