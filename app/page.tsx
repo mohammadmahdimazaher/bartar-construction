@@ -49,6 +49,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [projectError, setProjectError] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [headerHidden, setHeaderHidden] = useState(false);
 
   const [theme, setTheme] = useState<Theme>("light");
 
@@ -71,21 +72,35 @@ export default function Home() {
   }
 
   useEffect(() => {
+    let previousY = window.scrollY;
+
     const onScroll = () => {
+      const currentY = window.scrollY;
       const hero = document.getElementById("home");
       const heroEnd = hero ? hero.offsetHeight : window.innerHeight;
-      const pastHero = window.scrollY >= heroEnd - 90;
+      const pastHero = currentY >= heroEnd - 90;
+      const hasMoved = currentY > 2;
+      const movingDown = currentY > previousY;
+      const movingUp = currentY < previousY;
 
-      setScrolled(pastHero);
+      // Any tiny scroll turns the header black. After the hero, hide it
+      // while scrolling down and reveal it as soon as scrolling up begins.
+      setScrolled(hasMoved);
+      if (!pastHero || movingUp || currentY <= 2) {
+        setHeaderHidden(false);
+      } else if (pastHero && movingDown) {
+        setHeaderHidden(true);
+      }
 
-      if (pastHero) {
+      if (pastHero && movingDown) {
         setOpenMenu(null);
       }
+
+      previousY = currentY;
     };
 
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -156,7 +171,7 @@ export default function Home() {
   return (
     <main dir="rtl">
         {/* HEADER */}
-        <header className={scrolled ? "site-header is-solid" : "site-header"}>
+        <header className={`site-header ${scrolled ? "is-solid" : ""} ${headerHidden ? "is-hidden" : ""}`}>
           <Link href="/" className="brand-capsule" onClick={closeMenu}>
             <img className="brand-logo" src="/logoo.png" alt="لوگوی برتر" />
           </Link>
