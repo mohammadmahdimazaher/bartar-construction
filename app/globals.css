@@ -4007,3 +4007,199 @@ html[data-theme="dark"] .about-container {
     transition: none !important;
   }
 }
+
+
+/* =========================================
+   BARTAR HEADER — TURNER-INSPIRED CORPORATE NAV
+   Visual-only update: keep the hero video, menu state,
+   dropdown content and existing scroll behavior intact.
+========================================= */
+
+.site-header {
+  top: 0 !important;
+  min-height: 94px !important;
+  padding: 18px clamp(24px, 5vw, 84px) !important;
+  gap: clamp(24px, 4vw, 64px) !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.site-header.is-solid {
+  min-height: 78px !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  background: rgba(17, 24, 32, 0.94) !important;
+  border-bottom: 1px solid rgba(221, 183, 126, 0.24) !important;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.18) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+
+.site-header .brand-capsule {
+  order: 1;
+  flex-shrink: 0;
+  gap: 13px;
+  padding: 0 !important;
+  color: #fff !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.site-header .brand-logo {
+  width: 48px;
+  height: 48px;
+  padding: 3px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 2px;
+}
+
+.site-header .nav-capsule {
+  order: 2;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin-inline-start: auto;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(22px, 3vw, 44px);
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.site-header .nav-link {
+  min-height: 44px;
+  padding: 9px 0 !important;
+  color: rgba(255, 255, 255, 0.94) !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.site-header .nav-link:hover,
+.site-header .nav-link.active {
+  color: var(--gold-light) !important;
+}
+
+.site-header .nav-link::after {
+  bottom: 1px;
+  height: 2px;
+  background: var(--gold-light);
+}
+
+.site-header .nav-chevron {
+  color: var(--gold-light);
+  font-size: 14px;
+}
+
+.site-header .theme-toggle {
+  display: none !important;
+}
+
+/* Keep the existing mega-menu content and click behavior;
+   align its panel directly beneath the new desktop header. */
+.site-header ~ .mega-menu {
+  top: 106px;
+}
+
+@media (max-width: 900px) {
+  .site-header {
+    padding-inline: 4% !important;
+    gap: 20px !important;
+  }
+
+  .site-header .brand-capsule {
+    font-size: 16px;
+    gap: 9px;
+  }
+
+  .site-header .brand-logo {
+    width: 42px;
+    height: 42px;
+  }
+
+  .site-header .nav-capsule {
+    gap: clamp(14px, 2.2vw, 24px);
+  }
+
+  .site-header .nav-link {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-header,
+  .site-header.is-solid {
+    min-height: 0 !important;
+    padding: 12px 16px 10px !important;
+    gap: 8px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
+  }
+
+  .site-header .brand-capsule {
+    align-self: center;
+    justify-content: center;
+    font-size: 15px;
+  }
+
+  .site-header .brand-logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .site-header .nav-capsule {
+    width: 100%;
+    margin: 0;
+    justify-content: center;
+    gap: clamp(10px, 3vw, 20px);
+  }
+
+  .site-header .nav-link {
+    min-height: 38px;
+    padding: 7px 0 !important;
+    font-size: clamp(11px, 2.8vw, 13px);
+  }
+
+  .site-header ~ .mega-menu {
+    top: 112px;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-header,
+  .site-header.is-solid {
+    padding-inline: 10px !important;
+  }
+
+  .site-header .nav-capsule {
+    gap: 9px;
+  }
+
+  .site-header .nav-link {
+    font-size: 10.5px;
+  }
+
+  .site-header ~ .mega-menu {
+    top: 106px;
+  }
+}
