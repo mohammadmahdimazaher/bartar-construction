@@ -5248,3 +5248,31 @@ h2::after {
     transform: translateX(-240px) !important;
   }
 }
+
+
+/* FINAL: header geometry is identical before and after scrolling.
+   Only the background and text colors change. */
+.site-header.is-solid {
+  min-height: 82px !important;
+}
+@media (min-width: 901px) {
+  .site-header .nav-capsule,
+  .site-header.is-solid .nav-capsule {
+    gap: clamp(22px, 3vw, 44px) !important;
+    transform: translateX(-240px) !important;
+  }
+}
+@media (max-width: 900px) {
+  .site-header.is-solid {
+    min-height: 74px !important;
+  }
+  .site-header .nav-capsule,
+  .site-header.is-solid .nav-capsule {
+    transform: none !important;
+  }
+}
+@media (max-width: 640px) {
+  .site-header.is-solid {
+    min-height: 0 !important;
+  }
+}
