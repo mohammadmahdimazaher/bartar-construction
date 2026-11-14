@@ -6008,3 +6008,72 @@ h2::after {
     width: 94% !important;
   }
 }
+
+
+/* Refined compact header dimensions and hover treatment */
+.site-header,
+.site-header.is-solid {
+  left: 8% !important;
+  right: 8% !important;
+  width: 84% !important;
+  height: 72px !important;
+  min-height: 72px !important;
+  padding: 0 26px !important;
+}
+.site-header .brand-capsule .brand-logo,
+.site-header.is-solid .brand-capsule .brand-logo {
+  height: 66px !important;
+  width: clamp(165px, 14vw, 205px) !important;
+}
+.site-header .header-inline-nav {
+  height: 100% !important;
+  gap: clamp(20px, 2.7vw, 38px) !important;
+}
+.site-header .header-inline-link {
+  position: relative !important;
+  min-height: 42px !important;
+  padding: 9px 13px !important;
+  border-radius: 2px !important;
+  background: transparent !important;
+  transition: background-color .2s ease, color .2s ease !important;
+}
+.site-header:not(.is-solid) .header-inline-link:hover,
+.site-header:not(.is-solid) .header-inline-link.active {
+  background: #fff !important;
+  color: #222 !important;
+  -webkit-text-fill-color: #222 !important;
+  box-shadow: 0 3px 12px rgba(0,0,0,.08) !important;
+}
+.site-header .header-inline-link::after {
+  top: 0 !important;
+  bottom: auto !important;
+  right: 13px !important;
+  left: 13px !important;
+  width: 0 !important;
+  height: 4px !important;
+  margin: 0 !important;
+  background: #A88755 !important;
+  transition: width .28s ease !important;
+}
+.site-header .header-inline-link:hover::after,
+.site-header .header-inline-link.active::after {
+  width: calc(100% - 26px) !important;
+}
+.site-header .mega-menu { top: calc(100% + 6px) !important; }
+@media (max-width: 900px) {
+  .site-header, .site-header.is-solid {
+    left: 4% !important; right: 4% !important; width: 92% !important;
+    height: 66px !important; min-height: 66px !important; padding-inline: 14px !important;
+  }
+  .site-header .brand-capsule .brand-logo { height: 58px !important; }
+  .site-header .header-inline-nav { gap: 10px !important; }
+  .site-header .header-inline-link { padding-inline: 7px !important; font-size: 12px !important; }
+}
+@media (max-width: 640px) {
+  .site-header, .site-header.is-solid {
+    left: 2% !important; right: 2% !important; width: 96% !important;
+    height: 60px !important; min-height: 60px !important;
+  }
+  .site-header .header-inline-nav { gap: 5px !important; }
+  .site-header .header-inline-link { padding-inline: 4px !important; font-size: 10px !important; }
+}
