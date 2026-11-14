@@ -5503,3 +5503,73 @@ h2::after {
     font-size: 10px !important;
   }
 }
+
+
+/* FINAL SCROLL BEHAVIOR: black on the first pixel; hide on down-scroll
+   after the hero; reveal immediately on a small upward scroll. */
+.site-header {
+  transition: transform 0.28s ease, background-color 0.2s ease !important;
+  will-change: transform;
+}
+
+.site-header.is-solid {
+  top: 0 !important;
+  height: 82px !important;
+  min-height: 82px !important;
+  background: #080808 !important;
+  background-color: #080808 !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.12) !important;
+  border-radius: 0 !important;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.22) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.site-header.is-solid .nav-capsule {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.site-header.is-solid .nav-link,
+.site-header.is-solid .nav-link span,
+.site-header.is-solid .nav-chevron,
+.site-header.is-solid .nav-capsule *,
+.site-header.is-solid .theme-toggle {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  text-shadow: none !important;
+}
+
+.site-header.is-solid .nav-link:hover,
+.site-header.is-solid .nav-link.active {
+  color: #C4A675 !important;
+  -webkit-text-fill-color: #C4A675 !important;
+}
+
+.site-header.is-solid.is-hidden {
+  transform: translateY(-110%) !important;
+  pointer-events: none !important;
+}
+
+.site-header.is-solid:not(.is-hidden) {
+  transform: translateY(0) !important;
+}
+
+.site-header.is-solid .mega-menu {
+  top: 92px !important;
+}
+
+@media (max-width: 900px) {
+  .site-header.is-solid {
+    height: 74px !important;
+    min-height: 74px !important;
+  }
+  .site-header.is-solid .nav-capsule {
+    background: transparent !important;
+  }
+  .site-header.is-solid .mega-menu {
+    top: 84px !important;
+  }
+}
