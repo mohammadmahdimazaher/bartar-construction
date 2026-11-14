@@ -171,7 +171,7 @@ export default function Home() {
   return (
     <main dir="rtl">
         {/* HEADER */}
-        <header className={`site-header ${scrolled ? "is-solid" : ""} ${headerHidden ? "is-hidden" : ""}`}>
+        <header className={`site-header ${scrolled ? "is-solid" : ""} ${headerHidden ? "is-hidden" : ""}`} onMouseLeave={closeMenu}>
           <Link href="/" className="brand-capsule" onClick={closeMenu}>
             <img className="brand-logo" src="/logoo.png" alt="لوگوی برتر" />
           </Link>
@@ -183,15 +183,17 @@ export default function Home() {
 
             <button
               className={`nav-link ${openMenu === "about" ? "active" : ""}`}
+              onMouseEnter={() => setOpenMenu("about")}
               onClick={() => toggleMenu("about")}
               aria-expanded={openMenu === "about"}
             >
               درباره ما
-              <span className="nav-chevron">⌄</span>
+              <span className="nav-menu-mark" aria-hidden="true"><i /><i /><i /></span>
             </button>
 
             <button
               className={`nav-link ${openMenu === "projects" ? "active" : ""}`}
+              onMouseEnter={() => setOpenMenu("projects")}
               onClick={() => toggleMenu("projects")}
               aria-expanded={openMenu === "projects"}
             >
@@ -201,6 +203,7 @@ export default function Home() {
 
             <button
               className={`nav-link ${openMenu === "services" ? "active" : ""}`}
+              onMouseEnter={() => setOpenMenu("services")}
               onClick={() => toggleMenu("services")}
               aria-expanded={openMenu === "services"}
             >
