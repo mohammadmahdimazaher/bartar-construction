@@ -5215,3 +5215,20 @@ h2::after {
   color: #8a673b !important;
   -webkit-text-fill-color: #8a673b !important;
 }
+
+
+/* Desktop: after the hero, move navigation left and give labels more room. */
+@media (min-width: 901px) {
+  .site-header.is-solid .nav-capsule {
+    gap: clamp(36px, 4vw, 58px) !important;
+    transform: translateX(-48px) !important;
+  }
+}
+
+/* Keep the navigation naturally centered on smaller screens. */
+@media (max-width: 900px) {
+  .site-header.is-solid .nav-capsule {
+    gap: clamp(13px, 2vw, 22px) !important;
+    transform: none !important;
+  }
+}
