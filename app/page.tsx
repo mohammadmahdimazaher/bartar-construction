@@ -11,6 +11,7 @@ type Theme = "light" | "dark";
 type Project = {
   id: number;
   title: string;
+  description?: string;
   address?: string;
   main_image?: string | null;
   is_for_sale?: boolean;
@@ -572,44 +573,74 @@ export default function Home() {
                 دریافت پروژه‌ها با خطا مواجه شد. مطمئن شوید سرور روشن است.
               </p>
             ) : visibleProjects.length > 0 ? (
-              <div className="projects-list">
-                {visibleProjects.map((project) => (
-                  <Link
-                    href={`/projects/${project.id}`}
-                    className="p-card"
-                    key={project.id}
-                  >
-                    <div className="p-card-image">
-                      {project.main_image ? (
-                        <img
-                          src={mediaUrl(project.main_image)}
-                          alt={project.title}
-                        />
-                      ) : (
-                        <div className="project-no-image">
-                          تصویر پروژه ثبت نشده
-                        </div>
-                      )}
+              <div className="projects-carousel-wrap">
+                <button
+                  type="button"
+                  className="projects-carousel-arrow projects-carousel-prev"
+                  aria-label="پروژه‌های قبلی"
+                  onClick={(event) => {
+                    const track = event.currentTarget.parentElement?.querySelector(".projects-list");
+                    track?.scrollBy({ left: 420, behavior: "smooth" });
+                  }}
+                >
+                  →
+                </button>
+                <div className="projects-list">
+                  {visibleProjects.map((project) => (
+                    <Link
+                      href={`/projects/${project.id}`}
+                      className="p-card"
+                      key={project.id}
+                    >
+                      <div className="p-card-image">
+                        {project.main_image ? (
+                          <img
+                            src={mediaUrl(project.main_image)}
+                            alt={project.title}
+                          />
+                        ) : (
+                          <div className="project-no-image">
+                            تصویر پروژه ثبت نشده
+                          </div>
+                        )}
 
-                      {project.is_for_sale && (
-                        <span className="project-sale-label">
-                          قابل فروش
-                        </span>
-                      )}
-                    </div>
+                        {project.is_for_sale && (
+                          <span className="project-sale-label">
+                            قابل فروش
+                          </span>
+                        )}
 
-                    <div className="p-card-bar">
-                      <div>
-                        <h3>{project.title}</h3>
-                        {project.address && <p>{project.address}</p>}
+                        {project.description && (
+                          <div className="p-card-description">
+                            <p>{project.description}</p>
+                          </div>
+                        )}
                       </div>
 
-                      <span className="p-card-go">
-                        مشاهده جزئیات
-                      </span>
-                    </div>
-                  </Link>
-                ))}
+                      <div className="p-card-bar">
+                        <div>
+                          <h3>{project.title}</h3>
+                          {project.address && <p>{project.address}</p>}
+                        </div>
+
+                        <span className="p-card-go">
+                          مشاهده جزئیات
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  className="projects-carousel-arrow projects-carousel-next"
+                  aria-label="پروژه‌های بعدی"
+                  onClick={(event) => {
+                    const track = event.currentTarget.parentElement?.querySelector(".projects-list");
+                    track?.scrollBy({ left: -420, behavior: "smooth" });
+                  }}
+                >
+                  ←
+                </button>
               </div>
             ) : (
               <p className="project-status">
