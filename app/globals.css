@@ -4919,3 +4919,274 @@ h2::after {
   background: #1C1C1B !important;
   border-top-color: #A88755 !important;
 }
+
+
+/* ===== BARTAR HEADER — CLEAN EDITORIAL VERSION ===== */
+/* Fixed over the hero; switches to warm ivory once the hero has passed. */
+.site-header,
+.site-header.is-solid {
+  position: fixed !important;
+  inset: 0 0 auto 0 !important;
+  z-index: 99999 !important;
+  width: 100% !important;
+  min-height: 82px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: clamp(24px, 4vw, 64px) !important;
+  padding: 0 clamp(24px, 6.5vw, 100px) !important;
+  direction: rtl !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  transition: background-color .28s ease, border-color .28s ease, box-shadow .28s ease !important;
+}
+
+/* Logo and wordmark stay clean, without a capsule or decorative plate. */
+.site-header .brand-capsule,
+.site-header.is-solid .brand-capsule {
+  flex: 0 0 auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 11px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  color: #fff !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+
+.site-header .brand-capsule::before,
+.site-header .brand-capsule::after {
+  display: none !important;
+  content: none !important;
+}
+
+.site-header .brand-logo {
+  display: block !important;
+  width: 43px !important;
+  height: 43px !important;
+  object-fit: contain !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.site-header .brand-capsule span {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-size: 25px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, .22) !important;
+}
+
+/* Navigation is plain text, not a second capsule. */
+.site-header .nav-capsule {
+  flex: 0 1 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(22px, 3vw, 44px) !important;
+  width: auto !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.site-header .nav-link,
+.site-header .nav-capsule a,
+.site-header .nav-capsule button {
+  min-height: 42px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  padding: 8px 0 !important;
+  color: rgba(255, 255, 255, .96) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, .96) !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-family: inherit !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  text-shadow: 0 1px 7px rgba(0, 0, 0, .18) !important;
+}
+
+.site-header .nav-link::after {
+  bottom: 0 !important;
+  height: 1px !important;
+  background: #D2B27F !important;
+}
+
+.site-header .nav-link:hover,
+.site-header .nav-link.active,
+.site-header .nav-link:hover span,
+.site-header .nav-link.active span,
+.site-header .nav-chevron {
+  color: #D2B27F !important;
+  -webkit-text-fill-color: #D2B27F !important;
+}
+
+/* Warm ivory bar and charcoal labels after leaving the hero. */
+.site-header.is-solid {
+  min-height: 76px !important;
+  background: #F7F4EE !important;
+  border-bottom: 1px solid rgba(37, 37, 37, .10) !important;
+  box-shadow: 0 5px 22px rgba(37, 37, 37, .055) !important;
+}
+
+.site-header.is-solid .brand-capsule,
+.site-header.is-solid .brand-capsule span {
+  color: #252525 !important;
+  -webkit-text-fill-color: #252525 !important;
+  text-shadow: none !important;
+}
+
+.site-header.is-solid .nav-link,
+.site-header.is-solid .nav-capsule a,
+.site-header.is-solid .nav-capsule button,
+.site-header.is-solid .nav-link span,
+.site-header.is-solid .nav-chevron {
+  color: #252525 !important;
+  -webkit-text-fill-color: #252525 !important;
+  text-shadow: none !important;
+}
+
+.site-header.is-solid .nav-link:hover,
+.site-header.is-solid .nav-link.active,
+.site-header.is-solid .nav-link:hover span,
+.site-header.is-solid .nav-link.active span,
+.site-header.is-solid .nav-chevron {
+  color: #A88755 !important;
+  -webkit-text-fill-color: #A88755 !important;
+}
+
+/* Keep the mega menu aligned below the fixed header. */
+.site-header .mega-menu {
+  top: 82px !important;
+  z-index: 100000 !important;
+}
+
+.site-header.is-solid .mega-menu {
+  top: 76px !important;
+}
+
+@media (max-width: 900px) {
+  .site-header,
+  .site-header.is-solid {
+    min-height: 74px !important;
+    padding-inline: 24px !important;
+    gap: 22px !important;
+  }
+
+  .site-header .brand-logo {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .site-header .brand-capsule span {
+    font-size: 22px !important;
+  }
+
+  .site-header .nav-capsule {
+    gap: clamp(13px, 2vw, 22px) !important;
+  }
+
+  .site-header .nav-link,
+  .site-header .nav-capsule a,
+  .site-header .nav-capsule button {
+    font-size: 12px !important;
+  }
+
+  .site-header .mega-menu,
+  .site-header.is-solid .mega-menu {
+    top: 74px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header,
+  .site-header.is-solid {
+    min-height: 0 !important;
+    padding: 10px 16px 8px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 5px 12px !important;
+  }
+
+  .site-header .brand-capsule {
+    width: 100% !important;
+    justify-content: center !important;
+    gap: 8px !important;
+  }
+
+  .site-header .brand-logo {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .site-header .brand-capsule span {
+    font-size: 19px !important;
+  }
+
+  .site-header .nav-capsule {
+    width: 100% !important;
+    justify-content: center !important;
+    gap: clamp(10px, 3vw, 18px) !important;
+    margin: 0 !important;
+  }
+
+  .site-header .nav-link,
+  .site-header .nav-capsule a,
+  .site-header .nav-capsule button {
+    min-height: 32px !important;
+    padding: 5px 0 !important;
+    font-size: clamp(10px, 2.8vw, 12px) !important;
+  }
+
+  .site-header .mega-menu,
+  .site-header.is-solid .mega-menu {
+    top: 94px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .site-header,
+  .site-header.is-solid {
+    padding-inline: 10px !important;
+  }
+
+  .site-header .nav-capsule {
+    gap: 8px !important;
+  }
+
+  .site-header .nav-link,
+  .site-header .nav-capsule a,
+  .site-header .nav-capsule button {
+    font-size: 10px !important;
+  }
+}
