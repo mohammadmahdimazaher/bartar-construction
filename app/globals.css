@@ -4282,3 +4282,10 @@ html[data-theme="dark"] .about-container {
     font-size: 16px;
   }
 }
+
+
+/* ===== HIDE HEADER COMPLETELY AFTER SCROLLING PAST HERO ===== */
+/* The header is overlaid on the hero, so hiding it must not reserve space. */
+.site-header.is-solid {
+  display: none !important;
+}
