@@ -7567,3 +7567,209 @@ h2,
     transition: none !important;
   }
 }
+
+
+/* =========================================================
+   BARTAR MOTION PASS 02 — richer, smoother, more expressive
+   ========================================================= */
+
+@keyframes bartar-image-wipe {
+  from { clip-path: inset(0 0 100% 0); transform: scale(1.035); }
+  to   { clip-path: inset(0 0 0 0); transform: scale(1); }
+}
+@keyframes bartar-soft-glow {
+  0%, 100% { box-shadow: 0 16px 42px rgba(8, 30, 44, .12); }
+  50% { box-shadow: 0 24px 58px rgba(8, 47, 73, .22); }
+}
+@keyframes bartar-accent-sweep {
+  0% { transform: scaleX(0); opacity: .35; }
+  65% { transform: scaleX(1.12); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 1; }
+}
+@keyframes bartar-orbit {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-5px) rotate(2deg); }
+}
+
+/* Section entries feel more deliberate, with a subtle image wipe */
+.about-editorial-image,
+.split-media,
+.services-image,
+.mega-card-image,
+.mega-project-image {
+  overflow: hidden;
+}
+.reveal-ready.is-visible .about-editorial-image img,
+.reveal-ready.is-visible .split-media img,
+.reveal-ready.is-visible .services-image img {
+  animation: bartar-image-wipe 1.05s cubic-bezier(.16,1,.3,1) both;
+}
+.block-head h2::after,
+.split-text h2::after {
+  transform-origin: right center;
+  animation: bartar-accent-sweep .95s .18s cubic-bezier(.16,1,.3,1) both;
+}
+.hero-shade {
+  background-size: 140% 140%;
+  animation: bartar-hero-shade 14s ease-in-out infinite alternate;
+}
+@keyframes bartar-hero-shade {
+  from { background-position: 0% 45%; }
+  to { background-position: 100% 55%; }
+}
+
+/* Project cards: more generous canvas for longer descriptions */
+.work-projects .p-card-image {
+  aspect-ratio: 3 / 4 !important;
+  isolation: isolate;
+}
+.work-projects .p-card-description {
+  max-height: 92% !important;
+  padding: 34px 23px 26px !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  background: linear-gradient(
+    to top,
+    rgba(7, 15, 21, .98) 0%,
+    rgba(7, 15, 21, .94) 72%,
+    rgba(7, 15, 21, .72) 100%
+  ) !important;
+  opacity: 0;
+  transform: translate3d(0, 34px, 0);
+  filter: blur(5px);
+  transition:
+    opacity .55s cubic-bezier(.16,1,.3,1),
+    transform .65s cubic-bezier(.16,1,.3,1),
+    filter .55s ease;
+}
+.work-projects .p-card-description p {
+  display: block !important;
+  overflow: visible !important;
+  font-size: 13.5px !important;
+  line-height: 2.15 !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: initial !important;
+  white-space: pre-line;
+}
+.work-projects .p-card:hover .p-card-description,
+.work-projects .p-card:focus-visible .p-card-description {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  filter: blur(0);
+}
+.work-projects .p-card-image-caption {
+  transition:
+    opacity .35s ease,
+    transform .5s cubic-bezier(.16,1,.3,1);
+}
+.work-projects .p-card:hover .p-card-image-caption,
+.work-projects .p-card:focus-visible .p-card-image-caption {
+  opacity: .12;
+  transform: translateY(-10px);
+}
+.work-projects .p-card-image img {
+  transition:
+    transform 1.1s cubic-bezier(.16,1,.3,1),
+    filter .65s ease;
+}
+.work-projects .p-card:hover .p-card-image img {
+  transform: scale(1.09);
+  filter: saturate(1.12) contrast(1.04);
+}
+.work-projects .p-card {
+  transform: translateZ(0);
+  transition:
+    transform .65s cubic-bezier(.16,1,.3,1),
+    box-shadow .65s ease,
+    border-color .35s ease;
+}
+.work-projects .p-card:hover {
+  transform: translateY(-12px) scale(1.012);
+  box-shadow: 0 30px 70px rgba(8, 30, 44, .24) !important;
+}
+.work-projects .p-card:focus-visible {
+  outline-offset: 5px;
+}
+.work-projects .projects-list {
+  perspective: 1100px;
+}
+.work-projects .p-card.reveal-ready {
+  transform: translate3d(0, 46px, 0) rotateX(3deg);
+  transition:
+    opacity .85s cubic-bezier(.16,1,.3,1),
+    transform .85s cubic-bezier(.16,1,.3,1),
+    box-shadow .65s ease;
+}
+.work-projects .p-card.reveal-ready.is-visible {
+  transform: translate3d(0, 0, 0) rotateX(0);
+}
+.work-projects .p-card.reveal-ready.is-visible:nth-child(2) { transition-delay: .10s; }
+.work-projects .p-card.reveal-ready.is-visible:nth-child(3) { transition-delay: .20s; }
+.work-projects .p-card.reveal-ready.is-visible:nth-child(4) { transition-delay: .30s; }
+.work-projects .p-card.reveal-ready.is-visible:nth-child(5) { transition-delay: .40s; }
+.work-projects .p-card.reveal-ready.is-visible:nth-child(6) { transition-delay: .50s; }
+
+/* More tactile controls and navigation feedback */
+.filter-chip,
+.projects-carousel-arrow,
+.service-row-button,
+.mega-filter {
+  transition:
+    transform .38s cubic-bezier(.16,1,.3,1),
+    color .3s ease,
+    background .3s ease,
+    border-color .3s ease,
+    box-shadow .38s ease;
+}
+.filter-chip:hover,
+.mega-filter:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 20px rgba(8, 30, 44, .13);
+}
+.projects-carousel-arrow:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 24px rgba(8, 30, 44, .2);
+}
+.service-row.open {
+  box-shadow: inset -3px 0 0 var(--gold-light);
+}
+.service-row.open .service-row-description {
+  animation: bartar-reveal-up .45s cubic-bezier(.16,1,.3,1) both;
+}
+.mega-card:hover,
+.mega-project-card:hover {
+  box-shadow: 0 18px 40px rgba(0,0,0,.22);
+}
+
+/* Mobile: keep the larger description area usable without hover */
+@media (max-width: 760px) {
+  .work-projects .p-card-image {
+    aspect-ratio: 3 / 4 !important;
+  }
+  .work-projects .p-card-description {
+    max-height: 90% !important;
+    padding: 24px 16px 18px !important;
+  }
+  .work-projects .p-card-description p {
+    font-size: 12px !important;
+    line-height: 2.05 !important;
+  }
+  .work-projects .p-card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero-shade,
+  .reveal-ready.is-visible .about-editorial-image img,
+  .reveal-ready.is-visible .split-media img,
+  .reveal-ready.is-visible .services-image img {
+    animation: none !important;
+  }
+  .work-projects .p-card,
+  .work-projects .p-card-description,
+  .work-projects .p-card-image img {
+    transition: none !important;
+  }
+}
