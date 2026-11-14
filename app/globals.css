@@ -6550,3 +6550,59 @@ h2::after {
     -webkit-line-clamp: 4;
   }
 }
+
+
+/* Portrait social-reel style project cards: all labels stay on the image */
+.work-projects .p-card-image {
+  aspect-ratio: 9 / 16 !important;
+  overflow: hidden !important;
+  background: #e9e5df;
+}
+.work-projects .p-card-image-caption {
+  position: absolute;
+  z-index: 3;
+  inset: auto 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  padding: 48px 18px 18px;
+  color: #fff;
+  text-align: right;
+  background: linear-gradient(to top, rgba(10,12,14,.88), rgba(10,12,14,.35) 68%, transparent);
+  pointer-events: none;
+}
+.work-projects .p-card-image-caption h3 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(16px, 1.35vw, 21px);
+  font-weight: 700;
+  line-height: 1.7;
+}
+.work-projects .p-card-image-caption p {
+  margin: 0;
+  color: rgba(255,255,255,.88);
+  font-size: 12px;
+  line-height: 1.8;
+}
+.work-projects .p-card-image-caption .p-card-go {
+  display: inline-block;
+  margin-top: 5px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #c7a775;
+  color: #e5c99d;
+  font-size: 11px;
+}
+.work-projects .p-card-description {
+  z-index: 4;
+  max-height: 65%;
+  padding: 24px 18px 20px;
+}
+.work-projects .p-card-bar {
+  display: none !important;
+}
+@media (max-width: 560px) {
+  .work-projects .p-card-image {
+    aspect-ratio: 9 / 16 !important;
+  }
+}
