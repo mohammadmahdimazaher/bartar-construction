@@ -483,13 +483,6 @@ export default function Home() {
       <section className="section about-section" id="about">
         <div className="container about-container">
 
-          <div className="about-editorial-top">
-            <span className="about-editorial-label">
-              ABOUT BARTAR / GROUP
-            </span>
-            <span className="about-editorial-line" />
-          </div>
-
           <div className="about-editorial-main">
 
             <div className="about-editorial-heading">
@@ -521,20 +514,20 @@ export default function Home() {
                   "محتوای معرفی مجموعه از پنل مدیریت نمایش داده خواهد شد."}
               </p>
 
-              <div className="about-editorial-image">
-                {about?.image ? (
-                  <img
-                    src={mediaUrl(about.image)}
-                    alt={about.title || "گروه ساختمانی برتر"}
-                  />
-                ) : (
-                  <div className="about-editorial-image-placeholder">
-                    BARTAR CONSTRUCTION GROUP
-                  </div>
-                )}
-              </div>
-
             </div>
+          </div>
+
+          <div className="about-editorial-image">
+            {about?.image ? (
+              <img
+                src={mediaUrl(about.image)}
+                alt={about.title || "گروه ساختمانی برتر"}
+              />
+            ) : (
+              <div className="about-editorial-image-placeholder">
+                BARTAR CONSTRUCTION GROUP
+              </div>
+            )}
           </div>
 
           <div className="about-editorial-bottom">
