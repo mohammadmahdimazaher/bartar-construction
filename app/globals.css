@@ -4370,3 +4370,67 @@ html[data-theme="dark"] .about-container {
 }
 
 /* The header remains fixed; only its background changes after the hero. */
+
+
+/* ===== HEADER CONTRAST + TRANSPARENT BRAND LOCK ===== */
+/* Keep the header readable on both the hero video and white page sections. */
+.site-header,
+.site-header.is-solid {
+  display: flex !important;
+  position: fixed !important;
+  z-index: 1000 !important;
+}
+
+.site-header {
+  background: transparent !important;
+  border-bottom-color: rgba(255, 255, 255, 0.24) !important;
+}
+
+.site-header .brand-capsule,
+.site-header .brand-capsule:hover,
+.site-header .brand-capsule:focus,
+.site-header .brand-capsule::before,
+.site-header .brand-capsule::after {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: none;
+}
+
+.site-header .brand-capsule {
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+.site-header .brand-capsule span {
+  color: #fff !important;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.35);
+}
+
+.site-header .brand-logo {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.site-header.is-solid {
+  background: #fff !important;
+  border-bottom: 1px solid rgba(32, 43, 53, 0.12) !important;
+  box-shadow: 0 4px 18px rgba(17, 24, 32, 0.08) !important;
+}
+
+.site-header.is-solid .brand-capsule,
+.site-header.is-solid .brand-capsule span {
+  color: #202b35 !important;
+  text-shadow: none !important;
+}
+
+.site-header.is-solid .nav-link {
+  color: #202b35 !important;
+}
+
+.site-header.is-solid .nav-link:hover,
+.site-header.is-solid .nav-link.active,
+.site-header.is-solid .nav-chevron {
+  color: #9b7545 !important;
+}
