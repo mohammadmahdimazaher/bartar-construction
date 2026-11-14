@@ -6919,3 +6919,70 @@ h2::after {
     padding-bottom: 18px !important;
   }
 }
+
+
+/* ===== Final visual pass: services photo background + white projects ===== */
+
+/* Services: a restrained industrial photo behind a compact panel */
+.section-concrete .work-services {
+  width: 86% !important;
+  max-width: 980px !important;
+  margin: 0 auto !important;
+  padding: 18px 20px 22px !important;
+}
+.section-concrete .work-services::before {
+  background-image:
+    linear-gradient(rgba(247,244,238,.76), rgba(247,244,238,.76)),
+    url("/services-bg.jpg") !important;
+  background-size: cover !important;
+  background-position: center 48% !important;
+  background-repeat: no-repeat !important;
+}
+.section-concrete .services-panel {
+  padding: 18px 24px 16px !important;
+  border: 1px solid rgba(8,47,73,.18) !important;
+  border-radius: 16px !important;
+}
+.section-concrete .services-image {
+  aspect-ratio: 16 / 4.5 !important;
+}
+@media (max-width: 900px) {
+  .section-concrete .work-services {
+    width: 94% !important;
+    padding: 16px 12px 18px !important;
+  }
+}
+
+/* Projects: clean warm-white band, without the translucent backing */
+.section-concrete .work-projects::before {
+  background: #FFFFFF !important;
+}
+.section-concrete .work-projects .block-head h2,
+.section-concrete .work-projects .block-head p {
+  color: #252525 !important;
+}
+.section-concrete .work-projects .block-head h2::after {
+  background: #A88755 !important;
+}
+.section-concrete .work-projects .project-filters .filter-chip {
+  border-color: #A88755 !important;
+  color: #514B43 !important;
+}
+.section-concrete .work-projects .project-filters .filter-chip:hover,
+.section-concrete .work-projects .project-filters .filter-chip.selected {
+  background: #252525 !important;
+  border-color: #252525 !important;
+  color: #FFFFFF !important;
+}
+.work-projects .projects-carousel-wrap::before {
+  display: none !important;
+  content: none !important;
+}
+.work-projects .p-card-image,
+.work-projects .p-card-image img {
+  aspect-ratio: 9 / 16 !important;
+  border-radius: 0 !important;
+}
+.work-projects .p-card-image {
+  box-shadow: none !important;
+}
