@@ -1,5 +1,5 @@
 
-@import url("https://fonts.googleapis.com/css2?family=Estedad:wght@400;600;800;900&family=Vazirmatn:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Estedad:wght@400;500;600;700;800;900&family=Lalezar&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap");
 
 :root {
   --white: #F7F4EE;
@@ -7189,17 +7189,19 @@ h2::after {
 /* Custom font slots — exact font files can be dropped into /public/fonts later.
    Until then, elegant Persian fallbacks keep the layout stable. */
 :root {
-  --font-kamand: "Kamand", "Estedad", "Vazirmatn", sans-serif;
-  --font-kamera: "Kamera", "Estedad", "Vazirmatn", sans-serif;
-  --font-vazir: "Vazir", "Vazirmatn", sans-serif;
-  --font-farhood: "Farhood", "Estedad", "Vazirmatn", sans-serif;
-  --font-iran-marker: "Iran Marker", "Estedad", "Vazirmatn", sans-serif;
-  --font-light: "Light", "Vazirmatn", sans-serif;
+  /* Open-license web font pairing: Estedad + Lalezar + Vazirmatn */
+  --font-kamand: "Estedad", "Vazirmatn", sans-serif;
+  --font-kamera: "Lalezar", "Estedad", sans-serif;
+  --font-vazir: "Vazirmatn", sans-serif;
+  --font-farhood: "Estedad", "Lalezar", sans-serif;
+  --font-iran-marker: "Estedad", "Vazirmatn", sans-serif;
+  --font-light: "Vazirmatn", sans-serif;
 }
 
 /* Typography hierarchy */
 body {
   font-family: var(--font-light);
+  font-weight: 300;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
