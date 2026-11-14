@@ -7962,3 +7962,130 @@ h2,
     animation: none !important;
   }
 }
+
+
+/* =========================================================
+   BARTAR HERO WORDMARK — industrial editorial typography
+   ========================================================= */
+.hero-title-line {
+  position: relative;
+  isolation: isolate;
+  align-items: center;
+  gap: clamp(14px, 2.2vw, 30px);
+  padding: clamp(12px, 1.6vw, 22px) 0;
+}
+
+.hero-title-line::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: -4%;
+  top: 50%;
+  width: 112%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(218,190,139,.5), rgba(255,255,255,.2), transparent);
+  transform: translateY(2.3em);
+  transform-origin: right;
+  animation: hero-blueprint-line 1.4s .45s cubic-bezier(.16,1,.3,1) both;
+}
+
+.hero-title-line h1 {
+  position: relative;
+  margin: 0;
+  color: #e4c58e;
+  font-family: "Estedad", "Vazirmatn", sans-serif;
+  font-size: clamp(88px, 13.5vw, 178px);
+  font-weight: 900;
+  line-height: .98;
+  letter-spacing: -.065em;
+  -webkit-text-stroke: .35px rgba(255,245,224,.42);
+  text-shadow:
+    0 2px 0 rgba(255,255,255,.12),
+    0 12px 28px rgba(0,0,0,.34),
+    0 0 42px rgba(218,190,139,.12);
+  animation: hero-wordmark-arrive 1.2s .12s cubic-bezier(.16,1,.3,1) both;
+}
+
+.hero-small-title {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255,255,255,.94);
+  font-family: "Estedad", "Vazirmatn", sans-serif;
+  font-size: clamp(16px, 2vw, 25px);
+  font-weight: 650;
+  letter-spacing: -.025em;
+  text-shadow: 0 3px 16px rgba(0,0,0,.5);
+}
+
+.hero-small-title::before {
+  content: "";
+  width: clamp(24px, 3.2vw, 46px);
+  height: 2px;
+  background: #c9a66f;
+  box-shadow: 0 0 14px rgba(201,166,111,.45);
+  transform-origin: right;
+  animation: hero-blueprint-line .9s .35s cubic-bezier(.16,1,.3,1) both;
+}
+
+.hero-tag {
+  position: relative;
+  align-self: flex-end;
+  margin-bottom: clamp(12px, 2vw, 28px);
+  padding: 7px 13px 7px 0;
+  border-right: 2px solid rgba(201,166,111,.9);
+  color: rgba(255,255,255,.82);
+  font-family: "Vazirmatn", sans-serif;
+  font-size: clamp(12px, 1.2vw, 16px);
+  font-weight: 500;
+  letter-spacing: .02em;
+  text-shadow: 0 2px 12px rgba(0,0,0,.55);
+  animation: bartar-reveal-up .9s .48s cubic-bezier(.16,1,.3,1) both;
+}
+
+@keyframes hero-wordmark-arrive {
+  from { opacity: 0; transform: translate3d(28px, 10px, 0) scale(.96); filter: blur(8px); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+}
+@keyframes hero-blueprint-line {
+  from { transform: scaleX(0); opacity: 0; }
+  to { transform: scaleX(1); opacity: 1; }
+}
+
+@media (max-width: 760px) {
+  .hero-title-line {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 4px;
+  }
+  .hero-title-line h1 {
+    font-size: clamp(76px, 19vw, 116px);
+  }
+  .hero-small-title {
+    font-size: clamp(14px, 4vw, 19px);
+    gap: 7px;
+  }
+  .hero-small-title::before {
+    width: 20px;
+  }
+  .hero-tag {
+    font-size: 11px;
+    margin-bottom: 8px;
+    padding-right: 8px;
+  }
+  .hero-title-line::before {
+    width: 100%;
+    right: 0;
+    transform: translateY(1.9em);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-title-line::before,
+  .hero-title-line h1,
+  .hero-small-title::before,
+  .hero-tag {
+    animation: none !important;
+  }
+}
