@@ -4237,3 +4237,48 @@ html[data-theme="dark"] .about-container {
     box-shadow: none !important;
   }
 }
+
+
+/* ===== HEADER BRAND + NORMAL DOCUMENT SCROLL ===== */
+/* Keep the header over the hero, but let it scroll away with the page. */
+.hero {
+  position: relative;
+}
+
+.site-header,
+.site-header.is-solid {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Brand: logo followed by the short company name. */
+.site-header .brand-capsule {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.site-header .brand-capsule span {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+@media (max-width: 900px) {
+  .site-header .brand-capsule span {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-header .brand-capsule span {
+    font-size: 16px;
+  }
+}
