@@ -505,6 +505,7 @@ export default function Home() {
               <div className="about-editorial-watermark">
                 BARTAR
               </div>
+
             </div>
 
             <div className="about-editorial-description">
