@@ -4480,3 +4480,59 @@ html[data-theme="dark"] .about-container {
   background: transparent !important;
   box-shadow: none !important;
 }
+
+
+/* ===== HEADER STAYS VISIBLE THROUGH THE WHOLE PAGE ===== */
+.site-header,
+.site-header.is-solid {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+/* No plate, border, shadow, or pseudo-element behind the logo/name. */
+.site-header .brand-capsule,
+.site-header.is-solid .brand-capsule,
+.site-header .brand-capsule::before,
+.site-header .brand-capsule::after,
+.site-header.is-solid .brand-capsule::before,
+.site-header.is-solid .brand-capsule::after {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+.site-header .brand-capsule {
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* If the logo JPG has a white canvas, blend that canvas into the page/video. */
+.site-header .brand-logo {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  mix-blend-mode: multiply;
+}
+
+.site-header.is-solid .brand-capsule span {
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+  background: transparent !important;
+  text-shadow: none !important;
+}
+
+.site-header.is-solid .nav-link,
+.site-header.is-solid .nav-link span,
+.site-header.is-solid .nav-chevron {
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+  text-shadow: none !important;
+}
