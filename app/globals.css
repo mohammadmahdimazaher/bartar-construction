@@ -4289,3 +4289,36 @@ html[data-theme="dark"] .about-container {
 .site-header.is-solid {
   display: none !important;
 }
+
+
+/* ===== BRAND WORDMARK: LARGER TEXT, NO BACKPLATE ===== */
+.site-header .brand-capsule {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.site-header .brand-capsule span {
+  font-size: 30px !important;
+  font-weight: 700 !important;
+}
+
+.site-header .brand-logo {
+  background: transparent !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+@media (max-width: 900px) {
+  .site-header .brand-capsule span {
+    font-size: 25px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-header .brand-capsule span {
+    font-size: 22px !important;
+  }
+}
