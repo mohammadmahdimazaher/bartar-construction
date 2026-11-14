@@ -5053,7 +5053,7 @@ h2::after {
 /* Warm ivory bar and charcoal labels after leaving the hero. */
 .site-header.is-solid {
   min-height: 76px !important;
-  background: #F7F4EE !important;
+  background: #fff !important;
   border-bottom: 1px solid rgba(37, 37, 37, .10) !important;
   box-shadow: 0 5px 22px rgba(37, 37, 37, .055) !important;
 }
@@ -5189,4 +5189,29 @@ h2::after {
   .site-header .nav-capsule button {
     font-size: 10px !important;
   }
+}
+
+
+/* FINAL SCROLL VISIBILITY FIX: show every header item after the first small scroll. */
+.site-header.is-solid .nav-capsule {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: none !important;
+  display: flex !important;
+}
+
+.site-header.is-solid .nav-capsule *,
+.site-header.is-solid .theme-toggle {
+  opacity: 1 !important;
+  visibility: visible !important;
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+  text-shadow: none !important;
+}
+
+.site-header.is-solid .nav-capsule .nav-link:hover,
+.site-header.is-solid .nav-capsule .nav-link.active {
+  color: #8a673b !important;
+  -webkit-text-fill-color: #8a673b !important;
 }
