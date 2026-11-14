@@ -5866,3 +5866,7 @@ h2::after {
   .header-drawer { width: min(340px, 92vw); }
   .theme-toggle { top: 12px !important; left: 62px !important; }
 }
+
+/* Keep the theme switch clear of the left-side menu trigger */
+.theme-toggle { left: 132px !important; }
+@media (max-width: 760px) { .theme-toggle { left: 98px !important; } }
