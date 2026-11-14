@@ -5295,17 +5295,23 @@ h2::after {
 }
 
 
-/* FINAL LOGO UPDATE: larger standalone logo, without the adjacent wordmark. */
+/* FINAL LOGO UPDATE: wide, prominent logo while preserving its proportions. */
 .site-header .brand-capsule,
 .site-header.is-solid .brand-capsule {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  min-width: 0 !important;
   gap: 0 !important;
 }
 .site-header .brand-capsule .brand-logo,
 .site-header.is-solid .brand-capsule .brand-logo {
-  width: 68px !important;
-  height: 68px !important;
+  display: block !important;
+  width: clamp(132px, 13vw, 184px) !important;
+  height: 76px !important;
+  max-width: none !important;
   object-fit: contain !important;
-  mix-blend-mode: multiply !important;
+  object-position: right center !important;
+  mix-blend-mode: normal !important;
   background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
@@ -5317,14 +5323,19 @@ h2::after {
 @media (max-width: 900px) {
   .site-header .brand-capsule .brand-logo,
   .site-header.is-solid .brand-capsule .brand-logo {
-    width: 56px !important;
-    height: 56px !important;
+    width: 128px !important;
+    height: 64px !important;
   }
 }
 @media (max-width: 640px) {
+  .site-header .brand-capsule,
+  .site-header.is-solid .brand-capsule {
+    width: auto !important;
+    justify-content: center !important;
+  }
   .site-header .brand-capsule .brand-logo,
   .site-header.is-solid .brand-capsule .brand-logo {
-    width: 46px !important;
-    height: 46px !important;
+    width: 112px !important;
+    height: 52px !important;
   }
 }
