@@ -610,22 +610,17 @@ export default function Home() {
                           </span>
                         )}
 
+                        <div className="p-card-image-caption">
+                          <h3>{project.title}</h3>
+                          {project.address && <p>{project.address}</p>}
+                          <span className="p-card-go">مشاهده جزئیات</span>
+                        </div>
+
                         {project.description && (
                           <div className="p-card-description">
                             <p>{project.description}</p>
                           </div>
                         )}
-                      </div>
-
-                      <div className="p-card-bar">
-                        <div>
-                          <h3>{project.title}</h3>
-                          {project.address && <p>{project.address}</p>}
-                        </div>
-
-                        <span className="p-card-go">
-                          مشاهده جزئیات
-                        </span>
                       </div>
                     </Link>
                   ))}
