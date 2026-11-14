@@ -5988,3 +5988,23 @@ h2::after {
   .site-header .header-inline-nav .header-menu-toggle span { width: 23px !important; }
   .site-header .header-inline-nav .header-menu-toggle span:nth-child(2) { width: 16px !important; }
 }
+
+
+/* Slightly narrower floating header; keep menu closed until clicked. */
+.site-header,
+.site-header.is-solid {
+  left: 6% !important;
+  right: 6% !important;
+  width: 88% !important;
+}
+.site-header .mega-menu {
+  display: block !important;
+}
+@media (max-width: 760px) {
+  .site-header,
+  .site-header.is-solid {
+    left: 3% !important;
+    right: 3% !important;
+    width: 94% !important;
+  }
+}
