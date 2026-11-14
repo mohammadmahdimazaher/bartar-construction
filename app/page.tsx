@@ -50,6 +50,7 @@ export default function Home() {
   const [projectError, setProjectError] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [headerHidden, setHeaderHidden] = useState(false);
+  const [headerMenuOpen, setHeaderMenuOpen] = useState(false);
 
   const [theme, setTheme] = useState<Theme>("light");
 
@@ -171,45 +172,30 @@ export default function Home() {
   return (
     <main dir="rtl">
         {/* HEADER */}
-        <header className={`site-header ${scrolled ? "is-solid" : ""} ${headerHidden ? "is-hidden" : ""}`} onMouseLeave={closeMenu}>
+        <header className={`site-header ${scrolled ? "is-solid" : ""} ${headerHidden ? "is-hidden" : ""}`}>
           <Link href="/" className="brand-capsule" onClick={closeMenu}>
             <img className="brand-logo" src="/logoo.png" alt="لوگوی برتر" />
           </Link>
 
-          <nav className="nav-capsule">
-            <Link className="nav-link" href="/" onClick={closeMenu}>
-              صفحه اصلی
-            </Link>
-
-            <button
-              className={`nav-link ${openMenu === "about" ? "active" : ""}`}
-              onMouseEnter={() => setOpenMenu("about")}
-              onClick={() => toggleMenu("about")}
-              aria-expanded={openMenu === "about"}
-            >
-              درباره ما
-              <span className="nav-menu-mark" aria-hidden="true"><i /><i /><i /></span>
-            </button>
-
-            <button
-              className={`nav-link ${openMenu === "projects" ? "active" : ""}`}
-              onMouseEnter={() => setOpenMenu("projects")}
-              onClick={() => toggleMenu("projects")}
-              aria-expanded={openMenu === "projects"}
-            >
-              پروژه‌های ما
-              <span className="nav-chevron">⌄</span>
-            </button>
-
-            <button
-              className={`nav-link ${openMenu === "services" ? "active" : ""}`}
-              onMouseEnter={() => setOpenMenu("services")}
-              onClick={() => toggleMenu("services")}
-              aria-expanded={openMenu === "services"}
-            >
-              خدمات ما
-              <span className="nav-chevron">⌄</span>
-            </button>
+          <button
+            type="button"
+            className={`header-menu-toggle ${headerMenuOpen ? "active" : ""}`}
+            aria-label={headerMenuOpen ? "بستن فهرست" : "باز کردن فهرست"}
+            aria-expanded={headerMenuOpen}
+            onMouseEnter={() => setHeaderMenuOpen(true)}
+            onClick={() => setHeaderMenuOpen((value) => !value)}
+          >
+            <span /><span /><span />
+          </button>
+          <nav
+            className={`header-drawer ${headerMenuOpen ? "open" : ""}`}
+            aria-hidden={!headerMenuOpen}
+            onMouseLeave={() => setHeaderMenuOpen(false)}
+          >
+            <Link className="drawer-link" href="/" onClick={() => { closeMenu(); setHeaderMenuOpen(false); }}>صفحه اصلی</Link>
+            <button className="drawer-link" onMouseEnter={() => setOpenMenu("about")} onClick={() => toggleMenu("about")}>درباره ما <span>↙</span></button>
+            <button className="drawer-link" onMouseEnter={() => setOpenMenu("projects")} onClick={() => toggleMenu("projects")}>پروژه‌های ما <span>↙</span></button>
+            <button className="drawer-link" onMouseEnter={() => setOpenMenu("services")} onClick={() => toggleMenu("services")}>خدمات ما <span>↙</span></button>
           </nav>
 
           {/* THEME TOGGLE */}
@@ -233,7 +219,7 @@ export default function Home() {
 
           {/* MEGA MENU */}
           {openMenu && (
-            <div className="mega-menu" key={openMenu}>
+            <div className="mega-menu" key={openMenu} onMouseLeave={closeMenu}>
               <div className="mega-menu-top">
                 <div>
                   <span className="mega-eyebrow">
