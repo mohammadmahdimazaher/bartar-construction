@@ -5220,8 +5220,8 @@ h2::after {
 /* Desktop: after the hero, move navigation left and give labels more room. */
 @media (min-width: 901px) {
   .site-header.is-solid .nav-capsule {
-    gap: clamp(36px, 4vw, 58px) !important;
-    transform: translateX(-48px) !important;
+    gap: clamp(48px, 5vw, 72px) !important;
+    transform: translateX(-76px) !important;
   }
 }
 
