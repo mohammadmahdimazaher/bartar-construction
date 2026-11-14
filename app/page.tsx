@@ -111,6 +111,29 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    const targets = document.querySelectorAll(
+      ".section, .contact-section, .site-footer, .about-editorial-main, .about-editorial-bottom, .work-projects, .work-services, .split-media, .split-text, .p-card, .service-row"
+    );
+
+    targets.forEach((el) => el.classList.add("reveal-ready"));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+    );
+
+    targets.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
     fetch(`${API_BASE}/api/projects/projects/`)
       .then((response) => {
         if (!response.ok) throw new Error("Projects request failed");
