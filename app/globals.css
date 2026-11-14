@@ -3779,3 +3779,231 @@ html[data-theme="dark"] .about-container {
     font-size: 12px;
   }
 }
+
+
+/* =========================================
+   BARTAR FRONTEND POLISH — HEADER & NAV
+   Keeps the existing visual identity and layout.
+========================================= */
+
+.site-header {
+  transition:
+    background-color 0.3s ease,
+    min-height 0.3s ease,
+    padding 0.3s ease,
+    backdrop-filter 0.3s ease;
+}
+
+.site-header.is-solid {
+  position: fixed !important;
+  top: 0;
+  min-height: 78px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background: rgba(17, 24, 32, 0.88) !important;
+  border-bottom: 1px solid rgba(221, 183, 126, 0.18) !important;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.16) !important;
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+}
+
+.brand-capsule,
+.nav-link {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.brand-capsule {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.brand-capsule:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.nav-link {
+  position: relative;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  cursor: pointer;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 3px;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gold-light);
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-chevron {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.nav-link.active .nav-chevron {
+  transform: rotate(180deg);
+}
+
+.nav-link:focus-visible,
+.mega-close:focus-visible,
+.mega-card:focus-visible,
+.mega-project-card:focus-visible,
+.mega-service-card:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 4px;
+}
+
+.mega-menu {
+  max-height: calc(100vh - 132px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(221, 183, 126, 0.55) transparent;
+}
+
+@media (max-width: 900px) {
+  .site-header {
+    gap: 20px;
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+
+  .nav-capsule {
+    gap: clamp(12px, 2vw, 22px);
+  }
+
+  .brand-capsule {
+    font-size: 16px;
+    gap: 10px;
+  }
+
+  .brand-logo {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-header,
+  .site-header.is-solid {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 8px;
+    min-height: 0;
+    padding: 12px 16px 10px;
+  }
+
+  .site-header.is-solid {
+    position: fixed !important;
+    background: rgba(17, 24, 32, 0.94) !important;
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+
+  .brand-capsule {
+    align-self: center;
+    justify-content: center;
+    gap: 9px;
+    font-size: 15px;
+  }
+
+  .brand-logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nav-capsule {
+    width: 100%;
+    justify-content: center;
+    gap: clamp(10px, 3vw, 20px);
+    flex-wrap: nowrap;
+  }
+
+  .nav-link {
+    min-height: 38px;
+    padding: 7px 0;
+    font-size: clamp(11px, 2.8vw, 13px);
+    white-space: nowrap;
+  }
+
+  .mega-menu {
+    position: fixed;
+    top: 112px;
+    left: 3%;
+    width: 94%;
+    max-height: calc(100dvh - 126px);
+    padding: 20px 18px 14px;
+    border-radius: 18px;
+  }
+
+  .mega-menu-top {
+    gap: 12px;
+    padding-bottom: 16px;
+  }
+
+  .mega-menu-top h2 {
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .mega-menu-top p {
+    font-size: 11px;
+  }
+
+  .mega-grid,
+  .mega-project-grid,
+  .mega-services-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-header,
+  .site-header.is-solid {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .nav-capsule {
+    gap: 9px;
+  }
+
+  .nav-link {
+    font-size: 10.5px;
+  }
+
+  .brand-capsule {
+    font-size: 14px;
+  }
+
+  .mega-menu {
+    top: 106px;
+    padding: 17px 14px 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .brand-capsule,
+  .nav-link,
+  .nav-link::after,
+  .nav-chevron {
+    transition: none !important;
+  }
+}
