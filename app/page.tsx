@@ -72,9 +72,13 @@ export default function Home() {
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > window.innerHeight);
+      const hero = document.getElementById("home");
+      const heroEnd = hero ? hero.offsetHeight : window.innerHeight;
+      const pastHero = window.scrollY >= heroEnd - 90;
 
-      if (window.scrollY > window.innerHeight) {
+      setScrolled(pastHero);
+
+      if (pastHero) {
         setOpenMenu(null);
       }
     };
