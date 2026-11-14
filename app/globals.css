@@ -6825,7 +6825,7 @@ h2::after {
   left: 50%;
   width: 100vw;
   transform: translateX(-50%);
-  background: #9EAFB5;
+  background: #38596B;
 }
 
 .section-concrete .work-services {
@@ -6863,4 +6863,23 @@ h2::after {
   .section-concrete .work-services {
     padding: 28px 12px 32px !important;
   }
+}
+
+
+/* Strong industrial blue treatment for the Projects band */
+.section-concrete .work-projects .block-head h2,
+.section-concrete .work-projects .block-head p {
+  color: #F7F4EE !important;
+}
+.section-concrete .work-projects .block-head h2::after {
+  background: #C4A675 !important;
+}
+.section-concrete .work-projects .project-filters .filter-chip {
+  border-color: rgba(247,244,238,.72) !important;
+  color: #F7F4EE !important;
+}
+.section-concrete .work-projects .project-filters .filter-chip:hover,
+.section-concrete .work-projects .project-filters .filter-chip.selected {
+  background: #F7F4EE !important;
+  color: #263B48 !important;
 }
