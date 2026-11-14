@@ -155,21 +155,6 @@ export default function Home() {
 
   return (
     <main dir="rtl">
-      {/* HERO */}
-      <section className="hero" id="home">
-        <video
-          className="hero-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-        >
-          <source src="/hero.mp4" type="video/mp4" />
-        </video>
-
-        <div className="hero-shade" />
-
         {/* HEADER */}
         <header className={scrolled ? "site-header is-solid" : "site-header"}>
           <Link href="/" className="brand-capsule" onClick={closeMenu}>
@@ -465,6 +450,23 @@ export default function Home() {
             </div>
           )}
         </header>
+
+      {/* HERO */}
+      <section className="hero" id="home">
+        <video
+          className="hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
+
+        <div className="hero-shade" />
+
+
 
         <div className="hero-title-line">
           <span className="hero-small-title">گروه ساختمانی</span>
