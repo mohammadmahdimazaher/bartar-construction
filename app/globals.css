@@ -5240,3 +5240,11 @@ h2::after {
     transform: translateX(-140px) !important;
   }
 }
+
+
+/* HERO HEADER: stronger left shift for desktop navigation. */
+@media (min-width: 901px) {
+  .site-header:not(.is-solid) .nav-capsule {
+    transform: translateX(-240px) !important;
+  }
+}
