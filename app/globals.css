@@ -5789,3 +5789,80 @@ h2::after {
     top: 98px !important;
   }
 }
+
+
+/* ===== Minimal white Turner-inspired header ===== */
+.site-header {
+  top: 0 !important; left: 4% !important; right: 4% !important; width: 92% !important;
+  min-height: 72px; padding: 7px 22px !important; border-radius: 0 0 3px 3px;
+  background: transparent !important; border: 1px solid transparent !important; box-shadow: none !important;
+  transition: background .38s ease, box-shadow .38s ease, transform .48s cubic-bezier(.2,.75,.25,1), min-height .35s ease !important;
+  align-items: center;
+}
+.site-header.is-solid {
+  min-height: 64px; background: #fff !important; border-color: rgba(25,25,25,.06) !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,.07) !important;
+}
+.site-header .brand-capsule, .site-header.is-solid .brand-capsule {
+  order: 1; padding: 0 !important; background: transparent !important; border: 0 !important;
+  box-shadow: none !important; backdrop-filter: none !important;
+}
+.site-header .brand-logo {
+  width: clamp(150px, 14vw, 205px) !important; height: 62px !important;
+  padding: 0 !important; border-radius: 0 !important; object-fit: contain; background: transparent !important;
+}
+.site-header.is-solid .brand-logo { height: 54px !important; }
+.header-menu-toggle {
+  order: 3; width: 42px; height: 42px; padding: 10px 7px; display: flex;
+  flex-direction: column; justify-content: center; gap: 5px; border: 0;
+  background: transparent; cursor: pointer; pointer-events: auto;
+}
+.header-menu-toggle span {
+  display: block; width: 27px; height: 2px; background: #fff;
+  transition: width .3s ease, transform .3s ease, background .3s ease;
+}
+.site-header.is-solid .header-menu-toggle span { background: #171717; }
+.header-menu-toggle span:nth-child(2) { width: 19px; }
+.header-menu-toggle:hover span:nth-child(2) { width: 27px; }
+.header-menu-toggle.active span:first-child { transform: translateY(7px) rotate(45deg); }
+.header-menu-toggle.active span:nth-child(2) { opacity: 0; }
+.header-menu-toggle.active span:last-child { transform: translateY(-7px) rotate(-45deg); }
+.header-drawer {
+  position: absolute; top: calc(100% + 8px); left: 0; width: min(390px, 88vw);
+  padding: 18px 28px; display: flex; flex-direction: column; background: #fff; color: #171717;
+  border: 1px solid rgba(0,0,0,.07); box-shadow: 0 18px 45px rgba(0,0,0,.12);
+  opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-10px);
+  transition: opacity .32s ease, transform .32s ease, visibility .32s ease;
+}
+.header-drawer.open { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
+.drawer-link {
+  min-height: 58px; display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 8px 0; color: #171717; background: transparent; border: 0; border-bottom: 1px solid #e8e5df;
+  text-align: right; font-family: inherit; font-size: 15px; cursor: pointer;
+  transition: color .25s ease, padding .25s ease;
+}
+.drawer-link:last-child { border-bottom: 0; }
+.drawer-link span { color: #a88755; opacity: 0; transform: translateX(7px); transition: .25s ease; }
+.drawer-link:hover { color: #a88755; padding-right: 8px; }
+.drawer-link:hover span { opacity: 1; transform: translateX(0); }
+.site-header.is-hidden { transform: translateY(-115%) !important; }
+.site-header.is-solid:not(.is-hidden) { transform: translateY(0) !important; }
+.site-header .mega-menu {
+  top: calc(100% + 8px); left: 0; width: min(1100px, 92vw); color: #171717;
+  background: #fff; border: 1px solid #e8e5df; border-radius: 2px; box-shadow: 0 20px 55px rgba(0,0,0,.12);
+}
+.site-header .mega-menu h2 { color: #171717; }
+.site-header .mega-menu p { color: #666; }
+.site-header .mega-menu .mega-card, .site-header .mega-menu .mega-project-card,
+.site-header .mega-menu .mega-service-card { color: #171717; background: #f7f6f3; }
+.site-header .mega-menu .mega-card-content p, .site-header .mega-menu .mega-project-info p,
+.site-header .mega-menu .mega-service-card p, .site-header .mega-menu .mega-menu-footer { color: #777; }
+.theme-toggle { top: 16px !important; left: 82px !important; width: 38px !important; height: 38px !important; }
+@media (max-width: 760px) {
+  .site-header { left: 3% !important; right: 3% !important; width: 94% !important; min-height: 62px; padding: 5px 12px !important; }
+  .site-header.is-solid { min-height: 58px; }
+  .site-header .brand-logo { width: 126px !important; height: 48px !important; }
+  .header-menu-toggle { width: 38px; height: 38px; }
+  .header-drawer { width: min(340px, 92vw); }
+  .theme-toggle { top: 12px !important; left: 62px !important; }
+}
