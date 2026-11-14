@@ -5293,3 +5293,38 @@ h2::after {
     transform: none !important;
   }
 }
+
+
+/* FINAL LOGO UPDATE: larger standalone logo, without the adjacent wordmark. */
+.site-header .brand-capsule,
+.site-header.is-solid .brand-capsule {
+  gap: 0 !important;
+}
+.site-header .brand-capsule .brand-logo,
+.site-header.is-solid .brand-capsule .brand-logo {
+  width: 68px !important;
+  height: 68px !important;
+  object-fit: contain !important;
+  mix-blend-mode: multiply !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.site-header .brand-capsule > span,
+.site-header.is-solid .brand-capsule > span {
+  display: none !important;
+}
+@media (max-width: 900px) {
+  .site-header .brand-capsule .brand-logo,
+  .site-header.is-solid .brand-capsule .brand-logo {
+    width: 56px !important;
+    height: 56px !important;
+  }
+}
+@media (max-width: 640px) {
+  .site-header .brand-capsule .brand-logo,
+  .site-header.is-solid .brand-capsule .brand-logo {
+    width: 46px !important;
+    height: 46px !important;
+  }
+}
