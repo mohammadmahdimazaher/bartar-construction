@@ -4434,3 +4434,49 @@ html[data-theme="dark"] .about-container {
 .site-header.is-solid .nav-chevron {
   color: #9b7545 !important;
 }
+
+
+/* ===== FINAL FIX: BLACK TEXT ON WHITE STICKY HEADER ===== */
+.site-header.is-solid,
+.site-header.is-solid * {
+  opacity: 1 !important;
+}
+
+.site-header.is-solid .nav-capsule .nav-link,
+.site-header.is-solid .nav-capsule a,
+.site-header.is-solid .nav-capsule button,
+.site-header.is-solid .nav-capsule .nav-link span,
+.site-header.is-solid .nav-chevron {
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  text-shadow: none !important;
+}
+
+.site-header.is-solid .nav-link:hover,
+.site-header.is-solid .nav-link.active {
+  color: #8a673b !important;
+  -webkit-text-fill-color: #8a673b !important;
+}
+
+.site-header.is-solid .brand-capsule,
+.site-header.is-solid .brand-capsule span {
+  background: transparent !important;
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  text-shadow: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.site-header.is-solid .brand-capsule::before,
+.site-header.is-solid .brand-capsule::after {
+  content: none !important;
+  display: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.site-header.is-solid .brand-logo {
+  background: transparent !important;
+  box-shadow: none !important;
+}
