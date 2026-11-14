@@ -4536,3 +4536,53 @@ html[data-theme="dark"] .about-container {
   -webkit-text-fill-color: #111 !important;
   text-shadow: none !important;
 }
+
+/* ===== FINAL HEADER BAR: WHITE AND VISIBLE TO THE FOOTER ===== */
+/* Over the hero it stays transparent; after the hero the full bar stays white. */
+.site-header,
+.site-header.is-solid {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+.site-header.is-solid {
+  background: #fff !important;
+  background-color: #fff !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.10) !important;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.07) !important;
+}
+
+/* All header labels remain black on the white bar, including hover/open states. */
+.site-header.is-solid .brand-capsule,
+.site-header.is-solid .brand-capsule span,
+.site-header.is-solid .nav-link,
+.site-header.is-solid .nav-link span,
+.site-header.is-solid .nav-chevron,
+.site-header.is-solid .theme-toggle {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  text-shadow: none !important;
+}
+
+.site-header.is-solid .nav-link:hover,
+.site-header.is-solid .nav-link.active,
+.site-header.is-solid .nav-link:hover span,
+.site-header.is-solid .nav-link.active span,
+.site-header.is-solid .nav-chevron {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+.site-header.is-solid .brand-capsule,
+.site-header.is-solid .brand-capsule::before,
+.site-header.is-solid .brand-capsule::after {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
