@@ -93,6 +93,10 @@ export default function Home() {
         setHeaderHidden(true);
       }
 
+      if (hasMoved) {
+        setHeaderMenuOpen(false);
+      }
+
       if (pastHero && movingDown) {
         setOpenMenu(null);
       }
