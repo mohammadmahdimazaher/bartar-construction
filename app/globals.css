@@ -5276,3 +5276,20 @@ h2::after {
     min-height: 0 !important;
   }
 }
+
+
+/* Slightly increase navigation label spacing; keep it identical on scroll. */
+@media (min-width: 901px) {
+  .site-header .nav-capsule,
+  .site-header.is-solid .nav-capsule {
+    gap: clamp(30px, 4vw, 56px) !important;
+    transform: translateX(-240px) !important;
+  }
+}
+@media (max-width: 900px) {
+  .site-header .nav-capsule,
+  .site-header.is-solid .nav-capsule {
+    gap: clamp(17px, 2.6vw, 27px) !important;
+    transform: none !important;
+  }
+}
