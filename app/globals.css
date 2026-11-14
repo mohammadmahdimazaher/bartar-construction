@@ -4203,3 +4203,37 @@ html[data-theme="dark"] .about-container {
     top: 106px;
   }
 }
+
+
+/* ===== HERO VIDEO — FULL BLEED, NO DARK OVERLAY ===== */
+.hero .hero-shade {
+  display: none !important;
+  opacity: 0 !important;
+  background: transparent !important;
+}
+
+.hero::after {
+  display: none !important;
+  content: none !important;
+  box-shadow: none !important;
+}
+
+.hero .hero-video {
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  object-fit: cover !important;
+}
+
+@media (max-width: 720px) {
+  .hero .hero-video {
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+}
