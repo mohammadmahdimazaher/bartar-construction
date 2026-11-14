@@ -4661,3 +4661,51 @@ html[data-theme="dark"] .about-container {
     border-radius: 12px;
   }
 }
+
+
+/* ABOUT: remove the eyebrow label and give the image its own row. */
+.about-editorial-top {
+  display: none !important;
+}
+
+.about-editorial-image {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 34px 0 0 auto !important;
+  justify-self: end !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+.about-editorial-image img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: 560px !important;
+  object-fit: contain !important;
+  object-position: right center !important;
+  border-radius: inherit !important;
+}
+
+.about-editorial-image-placeholder {
+  width: 100%;
+  min-height: 260px;
+  display: grid;
+  place-items: center;
+  border-radius: inherit;
+}
+
+@media (max-width: 768px) {
+  .about-editorial-image {
+    margin-top: 24px !important;
+    border-radius: 12px !important;
+  }
+
+  .about-editorial-image img {
+    max-height: 360px !important;
+  }
+}
