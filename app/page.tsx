@@ -179,9 +179,9 @@ export default function Home() {
 
           <nav className="header-inline-nav" aria-label="منوی اصلی">
             <Link className="header-inline-link" href="/" onClick={closeMenu}>صفحه اصلی</Link>
-            <button className={`header-inline-link ${openMenu === "about" ? "active" : ""}`} onMouseEnter={() => setOpenMenu("about")} onClick={() => toggleMenu("about")}>درباره ما</button>
-            <button className={`header-inline-link ${openMenu === "projects" ? "active" : ""}`} onMouseEnter={() => setOpenMenu("projects")} onClick={() => toggleMenu("projects")}>پروژه‌های ما</button>
-            <button className={`header-inline-link ${openMenu === "services" ? "active" : ""}`} onMouseEnter={() => setOpenMenu("services")} onClick={() => toggleMenu("services")}>خدمات ما</button>
+            <button className={`header-inline-link ${openMenu === "about" ? "active" : ""}`} onClick={() => toggleMenu("about")}>درباره ما</button>
+            <button className={`header-inline-link ${openMenu === "projects" ? "active" : ""}`} onClick={() => toggleMenu("projects")}>پروژه‌های ما</button>
+            <button className={`header-inline-link ${openMenu === "services" ? "active" : ""}`} onClick={() => toggleMenu("services")}>خدمات ما</button>
             <button
               type="button"
               className={`header-menu-toggle ${headerMenuOpen ? "active" : ""}`}
