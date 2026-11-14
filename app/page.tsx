@@ -479,43 +479,9 @@ export default function Home() {
         </a>
       </section>
 
-      {/* ABOUT - EDITORIAL TYPOGRAPHY */}
+      {/* ABOUT SECTION */}
       <section className="section about-section" id="about">
         <div className="container about-container">
-
-          <div className="about-editorial-main">
-
-            <div className="about-editorial-heading">
-              <span className="about-editorial-kicker">
-                گروه ساختمانی برتر
-              </span>
-
-              <h2>
-                {about?.title || "ساختن،"}
-                <span>با نگاهی متفاوت</span>
-              </h2>
-
-              <div className="about-editorial-watermark">
-                BARTAR
-              </div>
-
-            </div>
-
-            <div className="about-editorial-description">
-
-              {about?.subtitle && (
-                <h3>{about.subtitle}</h3>
-              )}
-
-              <div className="about-editorial-accent" />
-
-              <p>
-                {about?.content ||
-                  "محتوای معرفی مجموعه از پنل مدیریت نمایش داده خواهد شد."}
-              </p>
-
-            </div>
-          </div>
 
           <div className="about-editorial-image">
             {about?.image ? (
@@ -530,15 +496,26 @@ export default function Home() {
             )}
           </div>
 
+          <div className="about-editorial-description">
+            {about?.subtitle && (
+              <h3>{about.subtitle}</h3>
+            )}
+
+            <div className="about-editorial-accent" />
+
+            <p>
+              {about?.content ||
+                "محتوای معرفی مجموعه از پنل مدیریت نمایش داده خواهد شد."}
+            </p>
+          </div>
+
           <div className="about-editorial-bottom">
             <div>
               <strong>کیفیت در ساخت</strong>
             </div>
-
             <div>
               <strong>تعهد در اجرا</strong>
             </div>
-
             <div>
               <strong>ماندگاری در زمان</strong>
             </div>
