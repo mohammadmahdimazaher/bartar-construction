@@ -6645,3 +6645,12 @@ h2::after {
     -webkit-line-clamp: 8 !important;
   }
 }
+
+
+/* Dark, defined edges around each project card */
+.work-projects .p-card {
+  border: 1px solid #171717 !important;
+}
+.work-projects .p-card:hover {
+  border-color: #000 !important;
+}
