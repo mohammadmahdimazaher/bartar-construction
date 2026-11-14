@@ -483,42 +483,38 @@ export default function Home() {
       <section className="section about-section" id="about">
         <div className="container about-container">
 
-          <div className="about-editorial-image">
-            {about?.image ? (
-              <img
-                src={mediaUrl(about.image)}
-                alt={about.title || "گروه ساختمانی برتر"}
-              />
-            ) : (
-              <div className="about-editorial-image-placeholder">
-                BARTAR CONSTRUCTION GROUP
-              </div>
-            )}
-          </div>
+          <div className="about-editorial-main">
+            <div className="about-editorial-image">
+              {about?.image ? (
+                <img
+                  src={mediaUrl(about.image)}
+                  alt={about.title || "گروه ساختمانی برتر"}
+                />
+              ) : (
+                <div className="about-editorial-image-placeholder">
+                  BARTAR CONSTRUCTION GROUP
+                </div>
+              )}
+            </div>
 
-          <div className="about-editorial-description">
-            {about?.subtitle && (
-              <h3>{about.subtitle}</h3>
-            )}
+            <div className="about-editorial-description">
+              {about?.subtitle && (
+                <h3>{about.subtitle}</h3>
+              )}
 
-            <div className="about-editorial-accent" />
+              <div className="about-editorial-accent" />
 
-            <p>
-              {about?.content ||
-                "محتوای معرفی مجموعه از پنل مدیریت نمایش داده خواهد شد."}
-            </p>
+              <p>
+                {about?.content ||
+                  "محتوای معرفی مجموعه از پنل مدیریت نمایش داده خواهد شد."}
+              </p>
+            </div>
           </div>
 
           <div className="about-editorial-bottom">
-            <div>
-              <strong>کیفیت در ساخت</strong>
-            </div>
-            <div>
-              <strong>تعهد در اجرا</strong>
-            </div>
-            <div>
-              <strong>ماندگاری در زمان</strong>
-            </div>
+            <div><strong>کیفیت در ساخت</strong></div>
+            <div><strong>تعهد در اجرا</strong></div>
+            <div><strong>ماندگاری در زمان</strong></div>
           </div>
 
         </div>
