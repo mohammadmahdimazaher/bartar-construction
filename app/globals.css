@@ -5870,3 +5870,31 @@ h2::after {
 /* Keep the theme switch clear of the left-side menu trigger */
 .theme-toggle { left: 132px !important; }
 @media (max-width: 760px) { .theme-toggle { left: 98px !important; } }
+
+
+/* Force readable text inside the hamburger drawer */
+.site-header .header-drawer,
+.site-header .header-drawer.open {
+  color: #171717 !important;
+  background: #ffffff !important;
+  z-index: 10020 !important;
+}
+.site-header .header-drawer .drawer-link,
+.site-header .header-drawer.open .drawer-link {
+  color: #171717 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  line-height: 1.8 !important;
+  text-indent: 0 !important;
+  -webkit-text-fill-color: #171717 !important;
+}
+.site-header .header-drawer .drawer-link:hover {
+  color: #a88755 !important;
+  -webkit-text-fill-color: #a88755 !important;
+}
+.site-header .header-drawer .drawer-link span {
+  color: #a88755 !important;
+  -webkit-text-fill-color: #a88755 !important;
+}
