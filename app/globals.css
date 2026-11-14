@@ -6660,3 +6660,18 @@ h2::after {
 .work-projects .p-card:hover {
   border-color: #000 !important;
 }
+
+
+/* Projects section: warm stone background and tighter transition from About */
+.section-concrete {
+  background: #D8CBB8 !important;
+  background-image: none !important;
+}
+
+.about-section {
+  padding-bottom: clamp(42px, 5vw, 68px) !important;
+}
+
+.section-concrete {
+  padding-top: clamp(42px, 5vw, 68px) !important;
+}
