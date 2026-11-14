@@ -6986,3 +6986,73 @@ h2::after {
 .work-projects .p-card-image {
   box-shadow: none !important;
 }
+
+
+/* ===== Final layout / color refinement ===== */
+
+/* Tighter vertical rhythm between main sections */
+.section {
+  padding-top: clamp(60px, 8vw, 110px) !important;
+  padding-bottom: clamp(60px, 8vw, 110px) !important;
+}
+
+/* Services background: use the industrial photo directly, no translucent wash */
+.section-concrete .work-services::before {
+  background-image: url("/services-bg.jpg") !important;
+  background-color: #F7F4EE !important;
+  background-size: cover !important;
+  background-position: center 48% !important;
+}
+
+/* Projects: wider and shorter cards */
+.work-projects .p-card-image,
+.work-projects .p-card-image img {
+  aspect-ratio: 4 / 5 !important;
+}
+
+/* Contact: one solid deep-navy block from edge to edge */
+.contact-section,
+.contact-section::before,
+.contact-section::after {
+  background: #082F49 !important;
+  background-image: none !important;
+}
+
+/* Approach: image right, text left */
+#approach .split {
+  direction: ltr !important;
+}
+#approach .split-media {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+}
+#approach .split-text {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  text-align: left !important;
+}
+#approach .split-text h2::after {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Replace the old dark/stone feel of the approach with a broader blue palette */
+#approach.section-navy {
+  background: linear-gradient(135deg, #062B42 0%, #0B4D6B 55%, #146B86 100%) !important;
+  background-image: none !important;
+}
+#approach.section-navy .prose,
+#approach.section-navy .lead {
+  color: #DCEFF5 !important;
+}
+
+@media (max-width: 900px) {
+  #approach .split-media,
+  #approach .split-text {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+  #approach .split-text {
+    text-align: right !important;
+  }
+}
