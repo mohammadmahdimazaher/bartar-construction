@@ -6229,3 +6229,17 @@ h2::after {
   pointer-events: none !important;
   transform: translateY(-8px) !important;
 }
+
+
+/* Keep the mega menu physically flush with the header during its entrance. */
+.site-header .mega-menu {
+  position: absolute !important;
+  top: 100% !important;
+  margin-top: 0 !important;
+  border-top: 0 !important;
+  transform: translateY(0) !important;
+}
+@keyframes mega-menu-in {
+  from { opacity: 0; transform: translateY(0); }
+  to { opacity: 1; transform: translateY(0); }
+}
