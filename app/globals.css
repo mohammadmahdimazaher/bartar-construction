@@ -5385,3 +5385,121 @@ h2::after {
     height: 66px !important;
   }
 }
+
+
+/* TURNER-INSPIRED SCROLLED HEADER — hero/header-on-video remains unchanged. */
+.site-header.is-solid {
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  min-height: 82px !important;
+  height: 82px !important;
+  padding: 0 4% !important;
+  gap: 28px !important;
+  background: #fff !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(37, 37, 37, 0.10) !important;
+  border-radius: 0 !important;
+  box-shadow: 0 3px 16px rgba(0, 0, 0, 0.055) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.site-header.is-solid .brand-capsule {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.site-header.is-solid .brand-capsule .brand-logo {
+  width: clamp(138px, 11vw, 168px) !important;
+  height: 70px !important;
+  object-fit: contain !important;
+}
+
+.site-header.is-solid .nav-capsule {
+  min-width: 0 !important;
+  min-height: 82px !important;
+  height: 82px !important;
+  padding: 0 !important;
+  gap: clamp(24px, 3vw, 42px) !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  transform: none !important;
+  color: #252525 !important;
+}
+
+.site-header.is-solid .nav-link,
+.site-header.is-solid .nav-link span,
+.site-header.is-solid .nav-chevron {
+  color: #252525 !important;
+  -webkit-text-fill-color: #252525 !important;
+  font-weight: 600 !important;
+}
+
+.site-header.is-solid .nav-link:hover,
+.site-header.is-solid .nav-link.active {
+  color: #A88755 !important;
+  -webkit-text-fill-color: #A88755 !important;
+}
+
+.site-header.is-solid .nav-link::after {
+  background: #A88755 !important;
+}
+
+.site-header.is-solid .mega-menu {
+  top: 92px !important;
+}
+
+@media (max-width: 900px) {
+  .site-header.is-solid {
+    min-height: 74px !important;
+    height: 74px !important;
+    padding-inline: 3% !important;
+    gap: 16px !important;
+  }
+
+  .site-header.is-solid .brand-capsule .brand-logo {
+    width: 126px !important;
+    height: 64px !important;
+  }
+
+  .site-header.is-solid .nav-capsule {
+    min-height: 74px !important;
+    height: 74px !important;
+    gap: clamp(12px, 2vw, 22px) !important;
+    transform: none !important;
+  }
+
+  .site-header.is-solid .mega-menu {
+    top: 84px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header.is-solid {
+    padding-inline: 12px !important;
+    gap: 8px !important;
+  }
+
+  .site-header.is-solid .brand-capsule .brand-logo {
+    width: 100px !important;
+    height: 58px !important;
+  }
+
+  .site-header.is-solid .nav-capsule {
+    gap: 9px !important;
+  }
+
+  .site-header.is-solid .nav-link {
+    font-size: 10px !important;
+  }
+}
