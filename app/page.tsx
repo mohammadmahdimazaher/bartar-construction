@@ -72,9 +72,7 @@ export default function Home() {
 
   useEffect(() => {
     const onScroll = () => {
-      const hero = document.getElementById("home");
-      const heroEnd = hero ? hero.offsetHeight : window.innerHeight;
-      const pastHero = window.scrollY >= heroEnd - 90;
+      const pastHero = window.scrollY > 20;
 
       setScrolled(pastHero);
 
