@@ -158,7 +158,7 @@ export default function Home() {
         {/* HEADER */}
         <header className={scrolled ? "site-header is-solid" : "site-header"}>
           <Link href="/" className="brand-capsule" onClick={closeMenu}>
-            <img className="brand-logo" src="/logoo.jpg" alt="لوگوی برتر" />
+            <img className="brand-logo" src="/logoo.png" alt="لوگوی برتر" />
           </Link>
 
           <nav className="nav-capsule">
@@ -737,7 +737,7 @@ export default function Home() {
         <div className="footer-brand">
           <img
             className="brand-logo"
-            src="/logoo.jpg"
+            src="/logoo.png"
             alt="لوگوی گروه ساختمانی برتر"
           />
           <span>گروه ساختمانی برتر</span>
