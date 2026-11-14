@@ -6775,3 +6775,24 @@ h2::after {
     padding-top: 6px !important;
   }
 }
+
+
+/* Full-width khaki background for the entire Projects + Services section */
+.section-concrete {
+  background: #D8CBB8 !important;
+  background-image: none !important;
+}
+
+/* No separate panel behind Projects: let the full section background continue */
+.section-concrete .work-projects {
+  background: transparent !important;
+  border-radius: 0 !important;
+}
+
+/* The subtle translucent treatment remains only behind the project photos */
+.work-projects .projects-carousel-wrap::before {
+  background: rgba(255,255,255,.14) !important;
+  border-color: rgba(255,255,255,.28) !important;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
