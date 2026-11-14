@@ -159,7 +159,6 @@ export default function Home() {
         <header className={scrolled ? "site-header is-solid" : "site-header"}>
           <Link href="/" className="brand-capsule" onClick={closeMenu}>
             <img className="brand-logo" src="/logoo.jpg" alt="لوگوی برتر" />
-            <span>برتر</span>
           </Link>
 
           <nav className="nav-capsule">
