@@ -6606,3 +6606,42 @@ h2::after {
     aspect-ratio: 9 / 16 !important;
   }
 }
+
+
+/* Refined project cards: slightly shorter, rounded, with more room for copy */
+.work-projects .p-card {
+  border-radius: 15px !important;
+  overflow: hidden !important;
+}
+.work-projects .p-card-image {
+  aspect-ratio: 4 / 5 !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+.work-projects .p-card-image img {
+  border-radius: 10px !important;
+}
+.work-projects .p-card-description {
+  max-height: 82% !important;
+  padding: 30px 20px 22px !important;
+  overflow-y: auto !important;
+  border-radius: 0 0 10px 10px;
+}
+.work-projects .p-card-description p {
+  font-size: 13px !important;
+  line-height: 1.95 !important;
+  -webkit-line-clamp: 9 !important;
+}
+@media (max-width: 560px) {
+  .work-projects .p-card-image {
+    aspect-ratio: 4 / 5 !important;
+  }
+  .work-projects .p-card-description {
+    max-height: 82% !important;
+    padding: 22px 15px 16px !important;
+  }
+  .work-projects .p-card-description p {
+    font-size: 12px !important;
+    -webkit-line-clamp: 8 !important;
+  }
+}
