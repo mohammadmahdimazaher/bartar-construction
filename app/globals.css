@@ -7773,3 +7773,190 @@ h2,
     transition: none !important;
   }
 }
+
+
+/* =========================================================
+   MEGA MENU — continuous premium motion details
+   ========================================================= */
+
+@keyframes mega-ambient-drift {
+  0%   { background-position: 0% 50%, 100% 0%; }
+  50%  { background-position: 100% 50%, 0% 100%; }
+  100% { background-position: 0% 50%, 100% 0%; }
+}
+@keyframes mega-border-glint {
+  0%, 100% { border-color: rgba(196,166,117,.24); box-shadow: 0 24px 70px rgba(0,0,0,.32), 0 0 0 rgba(196,166,117,0); }
+  50% { border-color: rgba(196,166,117,.62); box-shadow: 0 28px 78px rgba(0,0,0,.38), 0 0 24px rgba(196,166,117,.10); }
+}
+@keyframes mega-card-breathe {
+  0%, 100% { box-shadow: inset 0 1px 0 rgba(255,255,255,.035), 0 8px 22px rgba(0,0,0,.08); }
+  50% { box-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 13px 30px rgba(0,0,0,.17); }
+}
+@keyframes mega-image-pan {
+  0%, 100% { transform: scale(1.015) translate3d(0,0,0); }
+  50% { transform: scale(1.055) translate3d(-1.2%, -.8%, 0); }
+}
+@keyframes mega-number-pulse {
+  0%, 100% { opacity: .72; text-shadow: 0 0 0 rgba(196,166,117,0); }
+  50% { opacity: 1; text-shadow: 0 0 15px rgba(196,166,117,.35); }
+}
+@keyframes mega-footer-glide {
+  0%, 100% { transform: translateX(0); opacity: .48; }
+  50% { transform: translateX(-5px); opacity: .78; }
+}
+@keyframes mega-underline-flow {
+  0% { transform: scaleX(.25); transform-origin: right; }
+  50% { transform: scaleX(1); transform-origin: right; }
+  51% { transform-origin: left; }
+  100% { transform: scaleX(.25); transform-origin: left; }
+}
+
+/* The menu itself has a slow, restrained ambient glow */
+.mega-menu {
+  background:
+    radial-gradient(ellipse at 8% 0%, rgba(35,104,130,.22), transparent 42%),
+    radial-gradient(ellipse at 94% 100%, rgba(168,135,85,.17), transparent 38%),
+    linear-gradient(125deg, rgba(32,43,53,.985), rgba(13,25,34,.985), rgba(25,48,60,.985)) !important;
+  background-size: 180% 180%, 180% 180%, 220% 220% !important;
+  animation:
+    mega-ambient-drift 18s ease-in-out infinite,
+    mega-border-glint 6s ease-in-out infinite,
+    bartar-reveal-up .48s cubic-bezier(.16,1,.3,1) both !important;
+  transform-origin: top center;
+}
+
+/* Fine animated line below the menu heading */
+.mega-menu-top {
+  position: relative;
+}
+.mega-menu-top::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196,166,117,.85), rgba(255,255,255,.22), transparent);
+  transform-origin: right;
+  animation: mega-underline-flow 7s ease-in-out infinite;
+}
+
+/* Cards have a gentle idle shimmer; hover takes over with a stronger lift */
+.mega-card,
+.mega-project-card,
+.mega-service-card {
+  position: relative;
+  isolation: isolate;
+  animation: mega-card-breathe 7s ease-in-out infinite;
+}
+.mega-card:nth-child(2),
+.mega-project-card:nth-child(2),
+.mega-service-card:nth-child(2) { animation-delay: -2.2s; }
+.mega-card:nth-child(3),
+.mega-project-card:nth-child(3),
+.mega-service-card:nth-child(3) { animation-delay: -4.4s; }
+
+.mega-card::after,
+.mega-project-card::after,
+.mega-service-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(115deg, transparent 25%, rgba(255,255,255,.075) 48%, transparent 70%);
+  background-size: 240% 100%;
+  background-position: 120% 0;
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.mega-card:hover::after,
+.mega-project-card:hover::after,
+.mega-service-card:hover::after {
+  opacity: 1;
+  background-position: -120% 0;
+  transition: background-position 1s cubic-bezier(.16,1,.3,1), opacity .25s ease;
+}
+
+.mega-card-image img,
+.mega-project-image img {
+  animation: mega-image-pan 12s ease-in-out infinite;
+}
+.mega-card:hover .mega-card-image img,
+.mega-project-card:hover .mega-project-image img {
+  animation-play-state: paused;
+  transform: scale(1.1);
+}
+
+.mega-card-number,
+.mega-service-number,
+.mega-sale-label {
+  animation: mega-number-pulse 4.8s ease-in-out infinite;
+}
+.mega-card-arrow,
+.mega-service-arrow {
+  display: inline-block;
+  transition: transform .4s cubic-bezier(.16,1,.3,1), text-shadow .35s ease;
+}
+.mega-card:hover .mega-card-arrow {
+  transform: translateX(-8px) scale(1.15);
+  text-shadow: 0 0 14px rgba(196,166,117,.45);
+}
+.mega-service-card:hover .mega-service-arrow {
+  transform: translate(-4px,-4px) scale(1.16);
+  text-shadow: 0 0 14px rgba(196,166,117,.45);
+}
+
+.mega-menu-footer span:last-child {
+  animation: mega-footer-glide 5s ease-in-out infinite;
+}
+
+/* Filter pills receive a soft moving highlight */
+.mega-filter {
+  position: relative;
+  overflow: hidden;
+}
+.mega-filter::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  bottom: -60%;
+  left: -55%;
+  width: 35%;
+  transform: rotate(20deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent);
+  transition: left .65s cubic-bezier(.16,1,.3,1);
+}
+.mega-filter:hover::after,
+.mega-filter.active::after {
+  left: 125%;
+}
+
+/* Close control gets a slow breathing ring */
+.mega-close {
+  box-shadow: 0 0 0 0 rgba(196,166,117,0);
+  animation: mega-close-ring 5s ease-out infinite;
+}
+@keyframes mega-close-ring {
+  0%, 72%, 100% { box-shadow: 0 0 0 0 rgba(196,166,117,0); }
+  82% { box-shadow: 0 0 0 7px rgba(196,166,117,.09); }
+}
+
+/* Respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+  .mega-menu,
+  .mega-card,
+  .mega-project-card,
+  .mega-service-card,
+  .mega-card-image img,
+  .mega-project-image img,
+  .mega-card-number,
+  .mega-service-number,
+  .mega-sale-label,
+  .mega-menu-footer span:last-child,
+  .mega-close,
+  .mega-menu-top::after {
+    animation: none !important;
+  }
+}
