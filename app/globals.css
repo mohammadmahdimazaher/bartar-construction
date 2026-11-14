@@ -4118,7 +4118,7 @@ html[data-theme="dark"] .about-container {
 
 /* Keep the existing mega-menu content and click behavior;
    align its panel directly beneath the new desktop header. */
-.site-header ~ .mega-menu {
+.site-header .mega-menu {
   top: 106px;
 }
 
@@ -4180,7 +4180,7 @@ html[data-theme="dark"] .about-container {
     font-size: clamp(11px, 2.8vw, 13px);
   }
 
-  .site-header ~ .mega-menu {
+  .site-header .mega-menu {
     top: 112px;
   }
 }
@@ -4199,7 +4199,7 @@ html[data-theme="dark"] .about-container {
     font-size: 10.5px;
   }
 
-  .site-header ~ .mega-menu {
+  .site-header .mega-menu {
     top: 106px;
   }
 }
