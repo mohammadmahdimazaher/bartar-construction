@@ -1,12 +1,14 @@
 from django.contrib import admin
+from django.utils.html import format_html
 
 from .models import Project, UnitType
 
 
 class UnitTypeInline(admin.StackedInline):
     model = UnitType
-    extra = 1
+    extra = 0
     show_change_link = True
+    classes = ("collapse",)
 
     fieldsets = (
         ("اطلاعات واحد", {
@@ -25,17 +27,30 @@ class UnitTypeInline(admin.StackedInline):
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
     list_display = (
-        "title",
+        "project_title",
         "address",
         "total_units",
         "floors_count",
-        "is_for_sale",
+        "sale_status",
         "created_at",
     )
-    list_filter = ("is_for_sale", "has_elevator", "has_basement")
-    search_fields = ("title", "address")
+    list_display_links = ("project_title",)
+    list_filter = ("is_for_sale", "has_elevator", "has_basement", "has_pool")
+    search_fields = ("title", "address", "description")
     ordering = ("-created_at",)
+    date_hierarchy = "created_at"
+    list_per_page = 20
+    empty_value_display = "—"
+    save_on_top = True
     inlines = [UnitTypeInline]
+
+    @admin.display(description="نام پروژه", ordering="title")
+    def project_title(self, obj):
+        return obj.title
+
+    @admin.display(description="وضعیت فروش", boolean=True, ordering="is_for_sale")
+    def sale_status(self, obj):
+        return obj.is_for_sale
 
     fieldsets = (
         ("اطلاعات اصلی پروژه", {
@@ -49,6 +64,7 @@ class ProjectAdmin(admin.ModelAdmin):
             )
         }),
         ("مشخصات کلی ساختمان", {
+            "classes": ("collapse",),
             "fields": (
                 "total_units",
                 "floors_count",
@@ -58,6 +74,7 @@ class ProjectAdmin(admin.ModelAdmin):
             )
         }),
         ("امکانات ساختمان", {
+            "classes": ("collapse",),
             "fields": (
                 "has_elevator",
                 "has_roof_garden",
@@ -67,6 +84,7 @@ class ProjectAdmin(admin.ModelAdmin):
             )
         }),
         ("پیلوت و پارکینگ", {
+            "classes": ("collapse",),
             "fields": (
                 "has_pilot",
                 "pilot_area",
@@ -74,6 +92,7 @@ class ProjectAdmin(admin.ModelAdmin):
             )
         }),
         ("زیرزمین", {
+            "classes": ("collapse",),
             "fields": (
                 "has_basement",
                 "basement_area",
@@ -81,3 +100,8 @@ class ProjectAdmin(admin.ModelAdmin):
             )
         }),
     )
+
+
+admin.site.site_header = "گروه ساختمانی برتر"
+admin.site.site_title = "مدیریت برتر"
+admin.site.index_title = "مرکز مدیریت مجموعه"
