@@ -262,3 +262,114 @@ fieldset.module h2{cursor:pointer}
 .bt-empty-state span{font-size:10px}
 @media(max-width:1100px){.bt-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.bt-main-grid{grid-template-columns:1fr}.bt-module-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.bt-hero{padding:24px 20px;min-height:0}.bt-hero-seal{display:none}.bt-hero h1{font-size:23px!important}.bt-stat-grid{gap:9px}.bt-stat-card{padding:14px}.bt-stat-card strong{font-size:25px}.bt-stat-icon{position:static;margin-bottom:3px}.bt-project-row{gap:8px}.bt-status{display:none}.bt-module-grid{grid-template-columns:1fr}.bt-modules{padding:16px}.bt-project-panel{padding:16px}}
+
+
+/* =========================================================
+   BARTAR ADMIN — DARK INDUSTRIAL / EXECUTIVE REDESIGN
+   Charcoal, aged bronze and warm ivory. No blue/white UI.
+   ========================================================= */
+:root{
+  color-scheme:dark;
+  --bt-navy:#171a18;--bt-navy-deep:#101311;--bt-navy-soft:#252a26;
+  --bt-ink:#e8e0d3;--bt-muted:#a59b8c;--bt-paper:#141715;
+  --bt-surface:#1d221f;--bt-surface-2:#252b26;--bt-line:#373b34;
+  --bt-gold:#c18b55;--bt-gold-soft:#5a432f;--bt-green:#8d9c73;--bt-red:#b66b58;
+  --bt-radius:14px;
+}
+html,body,#container{direction:rtl;background:#141715!important;color:#e8e0d3!important}
+body,input,textarea,select,button,.button,.submit-row input{font-family:Tahoma,"Segoe UI",sans-serif!important}
+body{background:radial-gradient(ellipse at 12% 0%,rgba(193,139,85,.09),transparent 32%),#141715!important;color:#e8e0d3}
+a:link,a:visited{color:#d2a16e}a:hover{color:#f0c18c}
+#header{min-height:88px;padding:14px 34px;background:#101311!important;color:#f3ebdf;border-bottom:1px solid #765638;box-shadow:0 10px 32px #0006}
+#branding{display:flex;align-items:center}
+#site-name a,#site-name a:link,#site-name a:visited{color:#f3ebdf}
+.bartar-brand-mark{background:linear-gradient(145deg,#3b3025,#171a18);border:1px solid #9c7148;color:#e0b27d;border-radius:12px}
+.bartar-brand-copy small{color:#a99e8e}
+#user-tools{color:#bcb2a3}#user-tools a{color:#e2b783;border-color:#765638}
+div.breadcrumbs{background:transparent;color:#9f9689;padding:18px 34px 4px}
+div.breadcrumbs a{color:#c18b55}
+#content{padding:24px 34px 52px}#content h1{color:#f0e7d9}
+#nav-sidebar{background:#191e1b;border-left:1px solid #343a33;border-right:0}
+#nav-sidebar a{color:#c8beaf}#nav-sidebar .current-model{background:#302a22;border-radius:8px}
+#nav-sidebar .current-model a{color:#e5b47b}
+.module,.inline-group,.selector,.calendar,.clockbox,#changelist-filter,.results,#toolbar{
+  background:#1d221f!important;border:1px solid #373d35!important;border-radius:14px!important;
+  box-shadow:0 12px 28px #0003!important;color:#e8e0d3
+}
+.module h2,.module caption,.inline-group h2,#changelist-filter h2{
+  background:#282e29!important;color:#eddfcb!important;border-bottom:1px solid #805c3d!important
+}
+.module th,.module td,.form-row{border-color:#343a33!important}
+.module th,.form-row label{color:#d4c8b7}
+.module td a,#result_list a{color:#dfad77}
+#changelist{background:transparent}
+#changelist-filter h3{color:#d5a16b}#changelist-filter a{color:#bdb3a4}
+#changelist-filter li.selected a{color:#e7b77f}
+#result_list{background:#1d221f;border-collapse:separate;border-spacing:0}
+#result_list thead th{background:#2a302b!important;color:#d6c8b5;border-color:#41463e}
+#result_list tbody td,#result_list tbody th{background:#1d221f;color:#e6ddcf;border-color:#343a33}
+#result_list tbody tr:nth-child(even) td,#result_list tbody tr:nth-child(even) th{background:#202622}
+#result_list tbody tr:hover td,#result_list tbody tr:hover th{background:#302b23}
+#toolbar{padding:14px}
+#searchbar,input,textarea,select,.vTextField,.vLargeTextField{
+  background:#151a17!important;color:#eee5d8!important;border:1px solid #45483f!important;border-radius:9px!important
+}
+input::placeholder,textarea::placeholder{color:#8f887d}
+input:focus,textarea:focus,select:focus{border-color:#c18b55!important;outline:3px solid #c18b5526}
+.button,input[type=submit],input[type=button],.submit-row input,a.addlink,.object-tools a{
+  background:#9b6d43!important;border:1px solid #b9885b!important;color:#171512!important;
+  border-radius:9px!important;font-weight:800!important;box-shadow:none!important
+}
+.button:hover,input[type=submit]:hover,input[type=button]:hover,.submit-row input:hover,.object-tools a:hover{background:#c18b55!important}
+.object-tools a.addlink,.button.default,input[type=submit].default,.submit-row input.default{background:#c18b55!important;border-color:#d3a16d!important;color:#171512!important}
+.delete-link,a.deletelink{background:#8d493f!important;border-color:#a85c50!important;color:#fff!important}
+.paginator{color:#aaa092}.paginator a{color:#d6a16b}
+.form-row{background:#1d221f!important}
+.inline-related h3{background:#292e29!important;color:#e8d6bf!important;border-color:#3b4038}
+.submit-row{background:#202622!important;border-top:1px solid #41463e}
+.messagelist li{border:1px solid #4a5944;background:#252e25;color:#dce6d4;border-radius:10px}
+.calendar caption,.calendarbox h2{background:#292e29!important;color:#f0dfc9}
+.selector-chosen h2{background:#393025!important;color:#f1d5b0!important}
+#content .help,#content .helptext{color:#a99f90}
+
+/* Dashboard */
+.bt-dashboard{max-width:1700px;gap:25px;color:#e8e0d3}
+.bt-hero{min-height:260px;padding:38px 42px;border-radius:18px;background:
+ linear-gradient(105deg,rgba(14,17,15,.98) 0%,rgba(29,34,30,.94) 58%,rgba(75,53,34,.85) 100%),
+ repeating-linear-gradient(135deg,transparent 0 34px,#ffffff08 35px 36px);
+ border:1px solid #795b3d;box-shadow:0 18px 45px #0005}
+.bt-hero:before{background:repeating-linear-gradient(135deg,transparent 0 42px,#ffffff08 43px 44px)}
+.bt-kicker{color:#d6a16b;letter-spacing:2.2px}
+.bt-hero h1{font-size:34px!important;color:#f1e6d6!important;letter-spacing:-.6px}
+.bt-hero p{color:#c0b5a5;font-size:13px;max-width:690px}
+.bt-hero-seal{border-color:#a87b4e;color:#e3b47e;background:linear-gradient(145deg,#30271e,#191d19);box-shadow:inset 0 0 24px #c18b5510}
+.bt-primary-action{background:#c18b55;color:#171512!important;border-color:#d0a06e}
+.bt-ghost-action{color:#eadbc6!important;border-color:#8c7256}
+.bt-stat-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.bt-stat-card{background:linear-gradient(145deg,#252b26,#1b201d);border:1px solid #3b4038;color:#e8e0d3;box-shadow:0 12px 28px #0003}
+.bt-stat-card:hover{border-color:#a77a4e}
+.bt-stat-label,.bt-stat-card small{color:#a99f90}
+.bt-stat-card strong{color:#f0e4d3;font-size:30px}
+.bt-stat-icon{background:#3a2d21!important;color:#dca76e!important;border:1px solid #63472f}
+.bt-panel,.bt-app-card,.bt-module-card{background:#1d221f!important;border:1px solid #3a4038!important;color:#e8e0d3;box-shadow:0 12px 28px #0003}
+.bt-panel-heading h2,.bt-module-card strong,.bt-project-info strong,.bt-shortcut-row strong{color:#eee3d4!important}
+.bt-panel-heading a,.bt-project-panel a,.bt-shortcut-row>b{color:#d8a36d!important}
+.bt-muted-note,.bt-project-info small,.bt-project-meta small,.bt-shortcut-row small{color:#a79d8e!important}
+.bt-project-row{border-color:#343a33!important}
+.bt-project-row:hover{background:#292d27!important}
+.bt-project-thumb{background:#34291f!important;border:1px solid #715338!important;color:#d6a16b}
+.bt-project-meta b{color:#e7b77f}
+.bt-status{background:#343a33!important;color:#c7beaf!important;border:1px solid #4a5048}
+.bt-status-live{background:#303b2e!important;color:#c6d1ad!important;border-color:#58694e}
+.bt-shortcut-row{border-color:#343a33!important}
+.bt-shortcut-row i{background:#3a2d21!important;color:#dca76e!important;border:1px solid #63472f}
+.bt-library-panel{background:linear-gradient(120deg,#272b25,#35291f)!important}
+.bt-library-number{color:#e4b37c!important}
+.bt-module-grid{gap:13px}
+.bt-module-card{transition:transform .2s,border-color .2s}
+.bt-module-card:hover{transform:translateY(-3px);border-color:#a77a4e!important;background:#272b25!important}
+.bt-module-symbol{background:#392d22!important;color:#dfac75!important;border:1px solid #61472f}
+.bt-empty-state{background:#202622;border:1px dashed #5b5142;color:#c4b7a5}
+@media(max-width:1000px){.bt-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){#content{padding:18px 14px 35px}.bt-hero{padding:25px 22px;min-height:0}.bt-hero h1{font-size:25px!important}.bt-hero-seal{display:none}.bt-stat-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.bt-stat-grid{grid-template-columns:1fr}}
