@@ -5,42 +5,42 @@
 <div class="bt-dashboard">
   <section class="bt-hero">
     <div class="bt-hero-copy">
-      <span class="bt-kicker">BARTAR / MANAGEMENT OFFICE</span>
-      <h1>مرکز فرماندهی برتر</h1>
-      <p>نمایی یکپارچه از پروژه‌ها، واحدها و محتوای وب‌سایت؛ همه‌چیز برای مدیریت دقیق‌تر مجموعه.</p>
+      <span class="bt-kicker">BARTAR / EXECUTIVE CONTROL PANEL</span>
+      <h1>مرکز مدیریت گروه ساختمانی برتر</h1>
+      <p>مدیریت متمرکز پروژه‌های ساختمانی، اطلاعات واحدها، رسانه‌ها و محتوای وب‌سایت؛ با دسترسی سریع به مهم‌ترین عملیات روزانه مجموعه.</p>
       <div class="bt-hero-actions">
         <a class="bt-primary-action" href="{% url 'admin:projects_project_add' %}">＋ ثبت پروژه جدید</a>
-        <a class="bt-ghost-action" href="{% url 'admin:projects_project_changelist' %}">مشاهده همه پروژه‌ها ←</a>
+        <a class="bt-ghost-action" href="{% url 'admin:projects_project_changelist' %}">ورود به مدیریت پروژه‌ها ←</a>
       </div>
     </div>
     <div class="bt-hero-seal"><span>ب</span><small>گروه ساختمانی</small><strong>برتر</strong></div>
     <div class="bt-hero-lines"></div>
   </section>
 
-  <section class="bt-stat-grid">
+  <section class="bt-stat-grid" aria-label="آمار کلی مجموعه">
     <a class="bt-stat-card" href="{% url 'admin:projects_project_changelist' %}">
-      <span class="bt-stat-icon">▦</span><span class="bt-stat-label">کل پروژه‌ها</span>
-      <strong>{{ bartar_stats.projects|default:"۰" }}</strong><small>پروژه ثبت‌شده در سامانه</small>
+      <span class="bt-stat-icon">▦</span><span class="bt-stat-label">پروژه‌های مجموعه</span>
+      <strong>{{ bartar_stats.projects|default:"۰" }}</strong><small>تمام پروژه‌های ثبت‌شده</small>
     </a>
     <a class="bt-stat-card" href="{% url 'admin:projects_project_changelist' %}?is_for_sale__exact=1">
       <span class="bt-stat-icon">⌂</span><span class="bt-stat-label">پروژه‌های آماده فروش</span>
-      <strong>{{ bartar_stats.sale|default:"۰" }}</strong><small>دارای وضعیت فروش فعال</small>
+      <strong>{{ bartar_stats.sale|default:"۰" }}</strong><small>پروژه‌های دارای وضعیت فروش</small>
     </a>
-    <a class="bt-stat-card" href="{% url 'admin:projects_project_changelist' %}">
-      <span class="bt-stat-icon">▤</span><span class="bt-stat-label">تیپ واحدها</span>
-      <strong>{{ bartar_stats.units|default:"۰" }}</strong><small>اطلاعات واحدهای تعریف‌شده</small>
+    <a class="bt-stat-card" href="{% url 'admin:projects_unittype_changelist' %}">
+      <span class="bt-stat-icon">▤</span><span class="bt-stat-label">تیپ واحدهای تعریف‌شده</span>
+      <strong>{{ bartar_stats.units|default:"۰" }}</strong><small>واحدهای متصل به پروژه‌ها</small>
     </a>
     <a class="bt-stat-card" href="{% url 'admin:pages_sitepage_changelist' %}">
-      <span class="bt-stat-icon">◈</span><span class="bt-stat-label">صفحات منتشرشده</span>
-      <strong>{{ bartar_stats.published_pages|default:"۰" }}</strong><small>{{ bartar_stats.draft_pages|default:"۰" }} صفحه پیش‌نویس</small>
+      <span class="bt-stat-icon">◈</span><span class="bt-stat-label">صفحات منتشرشده سایت</span>
+      <strong>{{ bartar_stats.published_pages|default:"۰" }}</strong><small>{{ bartar_stats.draft_pages|default:"۰" }} صفحه در حالت پیش‌نویس</small>
     </a>
   </section>
 
   <section class="bt-main-grid">
     <div class="bt-panel bt-project-panel">
       <div class="bt-panel-heading">
-        <div><span class="bt-kicker bt-kicker-dark">PROJECT OVERVIEW</span><h2>آخرین پروژه‌ها</h2></div>
-        <a href="{% url 'admin:projects_project_changelist' %}">مدیریت پروژه‌ها <b>←</b></a>
+        <div><span class="bt-kicker bt-kicker-dark">PROJECT PORTFOLIO</span><h2>پروژه‌های اخیر</h2></div>
+        <a href="{% url 'admin:projects_project_changelist' %}">مشاهده همه پروژه‌ها <b>←</b></a>
       </div>
       {% if bartar_recent_projects %}
         <div class="bt-project-list">
@@ -51,32 +51,36 @@
               </span>
               <span class="bt-project-info"><strong>{{ project.title }}</strong><small>{{ project.address|default:"آدرس ثبت نشده" }}</small></span>
               <span class="bt-project-meta"><b>{{ project.total_units|default:"—" }}</b><small>واحد</small></span>
-              {% if project.is_for_sale %}<span class="bt-status bt-status-live">آماده فروش</span>{% else %}<span class="bt-status">عادی</span>{% endif %}
+              {% if project.is_for_sale %}<span class="bt-status bt-status-live">آماده فروش</span>{% else %}<span class="bt-status">در حال مدیریت</span>{% endif %}
               <span class="bt-row-arrow">←</span>
             </a>
           {% endfor %}
         </div>
       {% else %}
-        <div class="bt-empty-state"><strong>هنوز پروژه‌ای ثبت نشده</strong><span>اولین پروژه مجموعه را از دکمه ثبت پروژه جدید اضافه کنید.</span></div>
+        <div class="bt-empty-state"><strong>هنوز پروژه‌ای ثبت نشده است</strong><span>با ثبت اولین پروژه، اطلاعات آن در این بخش نمایش داده می‌شود.</span></div>
       {% endif %}
     </div>
 
     <aside class="bt-side-stack">
       <div class="bt-panel bt-shortcuts-panel">
-        <div class="bt-panel-heading"><div><span class="bt-kicker bt-kicker-dark">QUICK ACCESS</span><h2>دسترسی سریع</h2></div></div>
-        <a class="bt-shortcut-row" href="{% url 'admin:projects_project_add' %}"><i>＋</i><span><strong>افزودن پروژه</strong><small>ثبت پروژه و مشخصات ساختمان</small></span><b>←</b></a>
-        <a class="bt-shortcut-row" href="{% url 'admin:pages_sitepage_changelist' %}"><i>▧</i><span><strong>محتوای وب‌سایت</strong><small>مدیریت درباره ما و سایر بخش‌ها</small></span><b>←</b></a>
-        <a class="bt-shortcut-row" href="{% url 'admin:auth_user_changelist' %}"><i>♙</i><span><strong>مدیریت کاربران</strong><small>دسترسی‌ها و حساب‌های مدیریتی</small></span><b>←</b></a>
+        <div class="bt-panel-heading"><div><span class="bt-kicker bt-kicker-dark">QUICK OPERATIONS</span><h2>عملیات سریع</h2></div></div>
+        <a class="bt-shortcut-row" href="{% url 'admin:projects_project_add' %}"><i>＋</i><span><strong>افزودن پروژه ساختمانی</strong><small>مشخصات، تصاویر، پلان و مدل سه‌بعدی</small></span><b>←</b></a>
+        <a class="bt-shortcut-row" href="{% url 'admin:projects_unittype_changelist' %}"><i>▤</i><span><strong>مدیریت تیپ واحدها</strong><small>جهت، متراژ و فایل‌های هر واحد</small></span><b>←</b></a>
+        <a class="bt-shortcut-row" href="{% url 'admin:pages_sitepage_changelist' %}"><i>▧</i><span><strong>مدیریت محتوای سایت</strong><small>درباره ما، رویکرد و گالری تصاویر</small></span><b>←</b></a>
+        <a class="bt-shortcut-row" href="{% url 'admin:auth_user_changelist' %}"><i>♙</i><span><strong>کاربران و سطح دسترسی</strong><small>حساب‌های مدیریتی و مجوزها</small></span><b>←</b></a>
       </div>
       <div class="bt-panel bt-library-panel">
         <div class="bt-library-number">{{ bartar_stats.media|default:"۰" }}</div>
-        <div><span class="bt-kicker bt-kicker-dark">MEDIA LIBRARY</span><h2>رسانه‌های ثبت‌شده</h2><p>تصاویر پروژه‌ها، صفحات و گالری‌ها</p></div>
+        <div><span class="bt-kicker bt-kicker-dark">DIGITAL ASSETS</span><h2>رسانه‌های ثبت‌شده</h2><p>تصاویر پروژه‌ها، صفحات سایت و گالری‌ها</p></div>
       </div>
     </aside>
   </section>
 
   <section class="bt-modules">
-    <div class="bt-panel-heading"><div><span class="bt-kicker bt-kicker-dark">CONTROL CENTER</span><h2>تمام بخش‌های مدیریتی</h2></div><span class="bt-muted-note">دسترسی بر اساس سطح مجوز حساب شما</span></div>
+    <div class="bt-panel-heading">
+      <div><span class="bt-kicker bt-kicker-dark">MANAGEMENT DIRECTORY</span><h2>بخش‌های مدیریتی سامانه</h2></div>
+      <span class="bt-muted-note">نمایش بخش‌ها بر اساس مجوزهای حساب کاربری</span>
+    </div>
     <div class="bt-module-grid">
       {% for app in app_list %}
         {% for model in app.models %}
