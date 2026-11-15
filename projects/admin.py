@@ -29,13 +29,17 @@ class ProjectAdmin(admin.ModelAdmin):
     list_display = (
         "project_title",
         "address",
+        "project_image",
         "total_units",
         "floors_count",
         "sale_status",
         "created_at",
     )
     list_display_links = ("project_title",)
-    list_filter = ("is_for_sale", "has_elevator", "has_basement", "has_pool")
+    list_filter = ("is_for_sale", "has_elevator", "has_basement", "has_pool", "has_roof_garden", "has_game_room")
+    list_editable = ("address",)
+    date_hierarchy = "created_at"
+    list_select_related = ()
     search_fields = ("title", "address", "description")
     ordering = ("-created_at",)
     date_hierarchy = "created_at"
@@ -43,6 +47,12 @@ class ProjectAdmin(admin.ModelAdmin):
     empty_value_display = "ثبت نشده"
     save_on_top = True
     inlines = [UnitTypeInline]
+
+    @admin.display(description="تصویر")
+    def project_image(self, obj):
+        if obj.main_image:
+            return format_html('<img src="{}" style="width:58px;height:42px;object-fit:cover;border-radius:7px;" />', obj.main_image.url)
+        return "—"
 
     @admin.display(description="نام پروژه", ordering="title")
     def project_title(self, obj):
