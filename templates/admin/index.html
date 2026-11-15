@@ -1,0 +1,71 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="bartar-dashboard">
+  <section class="bartar-welcome">
+    <div class="bartar-eyebrow">BARTAR CONSTRUCTION GROUP</div>
+    <h1>مرکز مدیریت گروه ساختمانی برتر</h1>
+    <p>از این بخش می‌توانید پروژه‌ها، اطلاعات ساختمان‌ها و محتوای وب‌سایت را مدیریت و به‌روزرسانی کنید.</p>
+  </section>
+
+  <section>
+    <div class="bartar-section-head">
+      <h2>دسترسی‌های سریع</h2>
+      <span>میانبرهای پرکاربرد مدیریت</span>
+    </div>
+    <div class="bartar-shortcuts">
+      {% for app in app_list %}
+        {% for model in app.models %}
+          {% if model.object_name == "Project" %}
+            <a class="bartar-shortcut" href="{{ model.admin_url }}">
+              <span class="bartar-shortcut-mark">پ</span>
+              <span><strong>مدیریت پروژه‌ها</strong><small>مشاهده، ویرایش و سامان‌دهی پروژه‌ها</small></span>
+            </a>
+            {% if model.add_url %}
+              <a class="bartar-shortcut" href="{{ model.add_url }}">
+                <span class="bartar-shortcut-mark">+</span>
+                <span><strong>افزودن پروژه جدید</strong><small>ثبت مشخصات و اطلاعات یک پروژه</small></span>
+              </a>
+            {% endif %}
+          {% endif %}
+          {% if model.object_name == "Section" %}
+            <a class="bartar-shortcut" href="{{ model.admin_url }}">
+              <span class="bartar-shortcut-mark">م</span>
+              <span><strong>مدیریت محتوای سایت</strong><small>ویرایش بخش‌های محتوایی وب‌سایت</small></span>
+            </a>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <section>
+    <div class="bartar-section-head">
+      <h2>بخش‌های مدیریتی</h2>
+      <span>فهرست ماژول‌های در دسترس شما</span>
+    </div>
+    <div class="bartar-app-grid">
+      {% for app in app_list %}
+        <div class="bartar-app-card">
+          <h2>{{ app.name }}</h2>
+          {% if app.models %}
+            <ul>
+              {% for model in app.models %}
+                <li>
+                  <a href="{{ model.admin_url }}">{{ model.name }}</a>
+                  {% if model.add_url %}<a class="addlink" href="{{ model.add_url }}">افزودن مورد جدید +</a>{% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <div class="bartar-empty">موردی برای نمایش وجود ندارد.</div>
+          {% endif %}
+        </div>
+      {% empty %}
+        <div class="bartar-app-card"><div class="bartar-empty">در حال حاضر بخشی برای مدیریت در دسترس نیست.</div></div>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+{% endblock %}
