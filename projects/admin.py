@@ -39,8 +39,8 @@ class ProjectAdmin(admin.ModelAdmin):
     search_fields = ("title", "address", "description")
     ordering = ("-created_at",)
     date_hierarchy = "created_at"
-    list_per_page = 20
-    empty_value_display = "—"
+    list_per_page = 15
+    empty_value_display = "ثبت نشده"
     save_on_top = True
     inlines = [UnitTypeInline]
 
