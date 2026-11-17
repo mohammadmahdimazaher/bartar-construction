@@ -19,3 +19,30 @@
 @media(max-width:1150px){.dashboard-sidebar{width:225px;min-width:225px}.dashboard-content{padding:30px 25px}.dashboard-topbar{padding:0 25px}.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.dashboard-columns{grid-template-columns:1fr}.content-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){.bartar-dashboard{display:block}.dashboard-sidebar{position:relative;width:100%;min-width:0;height:auto;min-height:0;padding:15px 17px}.dashboard-brand{padding:0 3px 13px}.brand-symbol{width:39px;height:39px}.dashboard-brand strong{font-size:21px}.sidebar-caption,.sidebar-bottom{display:none}.dashboard-nav{display:flex;overflow-x:auto;gap:5px;padding-top:12px}.dashboard-nav button{white-space:nowrap;padding:9px 11px;font-size:10px}.dashboard-nav button em{display:none}.dashboard-topbar{height:60px;padding:0 17px}.topbar-date{display:none}.profile-chip{padding-right:12px}.dashboard-content{padding:25px 15px}.welcome-row{align-items:flex-start;gap:12px}.welcome-row h1{font-size:21px}.welcome-row p{font-size:10px}.outline-action{font-size:9px;padding:8px;white-space:nowrap}.stats-grid{gap:10px}.stat-card{padding:15px;min-height:135px}.stat-card>strong{font-size:26px}.stat-top{font-size:9px}.panel-card{padding:16px}.content-grid{grid-template-columns:1fr}.project-heading{align-items:flex-start;flex-direction:column}.search-box{width:100%}.recent-item{gap:8px}.status-pill{font-size:8px;padding:4px 7px}}
 @media(max-width:390px){.stats-grid{grid-template-columns:1fr 1fr}.stat-card>strong{font-size:23px}.stat-top i{width:26px;height:26px}.welcome-row{display:block}.outline-action{display:inline-block;margin-top:15px}}
+
+
+/* Small layout refinements for the overview panels */
+.recent-panel,
+.content-panel {
+  height: 100%;
+  min-width: 0;
+}
+
+.mini-count {
+  flex-shrink: 0;
+  padding: 6px 10px;
+  border: 1px solid #e8edf2;
+  border-radius: 20px;
+  color: #718096;
+  background: #f6f8fa;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .mini-count {
+    padding: 5px 8px;
+    font-size: 9px;
+  }
+}
