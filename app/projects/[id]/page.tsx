@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
-const API_BASE = "http://127.0.0.1:8000";
+import { API_BASE } from "../../../lib/api";
 
 type UnitType = {
   id: number;
