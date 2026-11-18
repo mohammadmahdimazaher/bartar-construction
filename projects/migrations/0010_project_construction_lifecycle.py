@@ -1,6 +1,7 @@
 # Generated for project construction lifecycle and progress tracking.
 from django.db import migrations, models
 import django.db.models.deletion
+import projects.validators
 
 
 class Migration(migrations.Migration):
@@ -63,7 +64,7 @@ class Migration(migrations.Migration):
                 ("title", models.CharField(max_length=200, verbose_name="عنوان گزارش")),
                 ("description", models.TextField(verbose_name="متن گزارش")),
                 ("report_date", models.DateField(verbose_name="تاریخ گزارش")),
-                ("image", models.ImageField(blank=True, null=True, upload_to="projects/reports/", verbose_name="تصویر گزارش")),
+                ("image", models.ImageField(blank=True, null=True, upload_to="projects/reports/", validators=[projects.validators.validate_image_size], verbose_name="تصویر گزارش")),
                 ("is_public", models.BooleanField(default=True, verbose_name="نمایش عمومی گزارش")),
                 ("created_at", models.DateTimeField(auto_now_add=True)),
                 ("project", models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name="construction_reports", to="projects.project", verbose_name="پروژه")),
