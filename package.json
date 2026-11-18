@@ -4,12 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test:backend && npm run test:frontend",
+    "test": "npm run test:backend && npm run typecheck",
     "dev": "concurrently \"py manage.py runserver 8000\" \"next dev --webpack\"",
     "build": "next build",
     "start": "next start",
     "test:backend": "python manage.py test",
-    "test:frontend": "tsc --noEmit",
     "typecheck": "tsc --noEmit"
   },
   "keywords": [],
