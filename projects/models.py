@@ -1,7 +1,7 @@
 
 from django.db import models
 
-from .validators import validate_image_size
+from .validators import validate_3d_model, validate_image_size
 
 
 class Project(models.Model):
@@ -21,6 +21,7 @@ class Project(models.Model):
         upload_to="projects/3d/",
         blank=True,
         null=True,
+        validators=[validate_3d_model],
     )
 
     parking_plan = models.ImageField(
@@ -242,6 +243,7 @@ class UnitType(models.Model):
         upload_to="projects/units/3d/",
         blank=True,
         null=True,
+        validators=[validate_3d_model],
     )
 
     def __str__(self):
