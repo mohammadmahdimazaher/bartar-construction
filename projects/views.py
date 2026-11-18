@@ -15,6 +15,8 @@ class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class UnitTypeViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = UnitType.objects.all()
     serializer_class = UnitTypeSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        return UnitType.objects.filter(project__is_published=True).select_related("project")
