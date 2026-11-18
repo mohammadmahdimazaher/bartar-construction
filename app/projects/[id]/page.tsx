@@ -148,15 +148,11 @@ export default function ProjectDetail() {
         )}
         <div className="hero-shade" />
         <div className="detail-hero-copy">
-          {project.is_for_sale && <span className="project-sale-label">قابل فروش</span>}
+          {project.construction_status === "completed" && project.is_for_sale && <span className="project-sale-label">قابل فروش</span>}
           {project.construction_status && (
             <span className={`project-construction-label status-${project.construction_status}`}>
               {project.construction_status === "in_progress" ? "در حال ساخت" :
-                project.construction_status === "paused" ? "متوقف‌شده" :
-                project.construction_status === "completed" ? "تکمیل‌شده" :
-                project.construction_status === "delivered" ? "تحویل‌شده" :
-                project.construction_status === "pending" ? "در انتظار شروع" :
-                project.construction_status === "planning" ? "در حال برنامه‌ریزی" : "بایگانی‌شده"}
+                project.construction_status === "completed" ? "اتمام ساخت" : "به‌زودی"}
             </span>
           )}
           <h1>{project.title}</h1>
