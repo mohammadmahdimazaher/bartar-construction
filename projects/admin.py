@@ -93,11 +93,7 @@ class ProjectAdmin(admin.ModelAdmin):
                 "is_for_sale",
                 "project_type",
                 "structure_type",
-                "project_type",
-                "structure_type",
                 "is_published",
-                "construction_start_date",
-                "estimated_completion_date",
             )
         }),
         ("مدیریت پیشرفت و وضعیت اجرایی", {
