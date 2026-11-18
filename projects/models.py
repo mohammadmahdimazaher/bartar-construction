@@ -1,6 +1,8 @@
 
 from django.db import models
 
+from .validators import validate_image_size
+
 
 class Project(models.Model):
     title = models.CharField(max_length=255)
@@ -290,7 +292,7 @@ class ConstructionReport(models.Model):
     report_date = models.DateField(verbose_name="تاریخ گزارش")
     image = models.ImageField(
         upload_to="projects/reports/", null=True, blank=True,
-        verbose_name="تصویر گزارش",
+        validators=[validate_image_size], verbose_name="تصویر گزارش",
     )
     is_public = models.BooleanField(default=True, verbose_name="نمایش عمومی گزارش")
     created_at = models.DateTimeField(auto_now_add=True)
