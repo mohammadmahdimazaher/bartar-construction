@@ -7,7 +7,9 @@ from .serializers import ProjectSerializer, UnitTypeSerializer
 
 
 class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Project.objects.all().prefetch_related("unit_types")
+    queryset = Project.objects.filter(is_published=True).prefetch_related(
+        "unit_types", "construction_stages", "construction_reports",
+    )
     serializer_class = ProjectSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
