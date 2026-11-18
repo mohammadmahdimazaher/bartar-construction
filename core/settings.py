@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "drf_yasg",
     "corsheaders",
+    "axes",
 
     "projects",
     "pages",
@@ -84,6 +85,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "axes.middleware.AxesMiddleware",
 ]
 
 # URLs
@@ -120,6 +122,19 @@ DATABASES = {
         "CONN_MAX_AGE": 60,
     }
 }
+
+# Authentication and admin login protection
+AUTHENTICATION_BACKENDS = [
+    "axes.backends.AxesStandaloneBackend",
+    "django.contrib.auth.backends.ModelBackend",
+]
+
+# Protect Django admin login against repeated failed attempts.
+AXES_ONLY_ADMIN_SITE = True
+AXES_FAILURE_LIMIT = 5
+AXES_COOLOFF_TIME = 0.5  # 30 minutes; Axes interprets numeric values as hours.
+AXES_HANDLER = "axes.handlers.database.AxesDatabaseHandler"
+AXES_RESET_ON_SUCCESS = True
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
