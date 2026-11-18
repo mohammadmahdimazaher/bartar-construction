@@ -23,6 +23,10 @@ type Project = {
   description: string;
   address: string;
   is_for_sale: boolean;
+  construction_status?: string;
+  construction_progress?: number | null;
+  construction_stages?: { id: number; title: string; progress: number; is_completed: boolean; notes?: string }[];
+  construction_reports?: { id: number; title: string; description: string; report_date: string; image?: string | null; stage_title?: string }[];
   main_image?: string | null;
   model_3d?: string | null;
   parking_plan?: string | null;
@@ -145,6 +149,16 @@ export default function ProjectDetail() {
         <div className="hero-shade" />
         <div className="detail-hero-copy">
           {project.is_for_sale && <span className="project-sale-label">قابل فروش</span>}
+          {project.construction_status && (
+            <span className={`project-construction-label status-${project.construction_status}`}>
+              {project.construction_status === "in_progress" ? "در حال ساخت" :
+                project.construction_status === "paused" ? "متوقف‌شده" :
+                project.construction_status === "completed" ? "تکمیل‌شده" :
+                project.construction_status === "delivered" ? "تحویل‌شده" :
+                project.construction_status === "pending" ? "در انتظار شروع" :
+                project.construction_status === "planning" ? "در حال برنامه‌ریزی" : "بایگانی‌شده"}
+            </span>
+          )}
           <h1>{project.title}</h1>
           {project.address && <p>{project.address}</p>}
         </div>
@@ -178,6 +192,49 @@ export default function ProjectDetail() {
           <p className="prose">{project.description}</p>
         </div>
       </section>
+
+
+      {/* CONSTRUCTION PROGRESS — visible only while construction is active or paused */}
+      {(project.construction_status === "in_progress" || project.construction_status === "paused") && (
+        <section className="section section-construction-progress">
+          <div className="container">
+            <div className="block-head">
+              <h2>روند پیشرفت ساخت</h2>
+              <p>{project.construction_status === "paused" ? "پروژه در حال حاضر متوقف است" : "آخرین وضعیت اجرای پروژه"}</p>
+            </div>
+            {typeof project.construction_progress === "number" && (
+              <div className="construction-overall-progress">
+                <strong>{num(project.construction_progress)}٪</strong>
+                <div className="construction-progress-track"><span style={{ width: `${project.construction_progress}%` }} /></div>
+              </div>
+            )}
+            {project.construction_stages && project.construction_stages.length > 0 && (
+              <div className="construction-stage-list">
+                {project.construction_stages.map((stage) => (
+                  <article className="construction-stage" key={stage.id}>
+                    <div className="construction-stage-heading">
+                      <h3>{stage.title}</h3><strong>{num(stage.progress)}٪</strong>
+                    </div>
+                    <div className="construction-progress-track"><span style={{ width: `${stage.progress}%` }} /></div>
+                    {stage.notes && <p>{stage.notes}</p>}
+                  </article>
+                ))}
+              </div>
+            )}
+            {project.construction_reports && project.construction_reports.length > 0 && (
+              <div className="construction-report-list">
+                <h3>گزارش‌های پیشرفت</h3>
+                {project.construction_reports.map((report) => (
+                  <article className="construction-report" key={report.id}>
+                    {report.image && <img src={mediaUrl(report.image)} alt={report.title} />}
+                    <div><h4>{report.title}</h4><small>{report.report_date}{report.stage_title ? ` · ${report.stage_title}` : ""}</small><p>{report.description}</p></div>
+                  </article>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* AMENITIES */}
       {amenities.length > 0 && (
