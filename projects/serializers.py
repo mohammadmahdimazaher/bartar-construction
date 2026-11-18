@@ -41,7 +41,9 @@ class ProjectSerializer(serializers.ModelSerializer):
     def get_construction_reports(self, obj):
         if obj.construction_status not in ("in_progress",):
             return []
-        reports = obj.construction_reports.filter(is_public=True)
+        reports = getattr(obj, "public_construction_reports", None)
+        if reports is None:
+            reports = obj.construction_reports.filter(is_public=True).select_related("stage")
         return ConstructionReportSerializer(reports, many=True, context=self.context).data
 
     def get_construction_progress(self, obj):
