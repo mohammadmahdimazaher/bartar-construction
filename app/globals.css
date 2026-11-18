@@ -8288,3 +8288,7 @@ html[data-theme="light"] .theme-toggle {
  .project-construction-label{top:10px;right:10px}
  .project-construction-progress{top:50px;right:10px}
 }
+
+/* Keep construction badges clear of the existing sale badge on project cards. */
+.work-projects .project-construction-label{top:52px;right:14px}
+.work-projects .project-construction-progress{top:91px;right:14px}
