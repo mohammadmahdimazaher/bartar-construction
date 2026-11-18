@@ -68,6 +68,10 @@ jobs:
         run: npm ci
       - name: Audit production npm dependencies
         run: npm audit --omit=dev --audit-level=high
+      - name: Report all npm dependency advisories
+        run: |
+          npm audit --json > /tmp/npm-audit.json || true
+          node -e 'const audit = require("/tmp/npm-audit.json"); console.log("npm audit summary:", audit.metadata?.vulnerabilities); for (const [name, issue] of Object.entries(audit.vulnerabilities || {})) console.log(name, issue.severity, issue.isDirect ? "direct" : "transitive", "fix:", JSON.stringify(issue.fixAvailable));'
       - name: Type-check frontend
         run: npm run typecheck
       - name: Build frontend
