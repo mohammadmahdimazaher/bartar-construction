@@ -13,6 +13,20 @@ class UnitTypeSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class ConstructionStageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ConstructionStage
+        fields = "__all__"
+
+
+class ConstructionReportSerializer(serializers.ModelSerializer):
+    stage_title = serializers.CharField(source="stage.title", read_only=True)
+
+    class Meta:
+        model = ConstructionReport
+        fields = "__all__"
+
+
 class ProjectSerializer(serializers.ModelSerializer):
     unit_types = UnitTypeSerializer(many=True, read_only=True)
     construction_stages = ConstructionStageSerializer(many=True, read_only=True)
@@ -32,19 +46,5 @@ class ProjectSerializer(serializers.ModelSerializer):
         model = Project
         fields = "__all__"
 
-
-
-class ConstructionStageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ConstructionStage
-        fields = "__all__"
-
-
-class ConstructionReportSerializer(serializers.ModelSerializer):
-    stage_title = serializers.CharField(source="stage.title", read_only=True)
-
-    class Meta:
-        model = ConstructionReport
-        fields = "__all__"
 
 
