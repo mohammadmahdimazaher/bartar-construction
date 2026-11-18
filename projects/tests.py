@@ -1,9 +1,32 @@
+from django.core.exceptions import ValidationError
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
 from django.urls import reverse
 from rest_framework.test import APIClient
 
 from .models import ConstructionReport, ConstructionStage, Project, UnitType
+from .validators import validate_3d_model
 from .views import UnitTypeViewSet
+
+
+class UploadSecurityTests(TestCase):
+    def test_glb_requires_valid_magic_header(self):
+        upload = SimpleUploadedFile("model.glb", b"<html>not a model</html>")
+        with self.assertRaises(ValidationError):
+            validate_3d_model(upload)
+
+    def test_valid_glb_header_is_accepted(self):
+        upload = SimpleUploadedFile("model.glb", b"glTF" + b"\x00" * 8)
+        validate_3d_model(upload)
+
+    def test_gltf_requires_valid_asset_document(self):
+        upload = SimpleUploadedFile("model.gltf", b'{"scenes": []}')
+        with self.assertRaises(ValidationError):
+            validate_3d_model(upload)
+
+    def test_valid_gltf_asset_document_is_accepted(self):
+        upload = SimpleUploadedFile("model.gltf", b'{"asset": {"version": "2.0"}}')
+        validate_3d_model(upload)
 
 
 class ConstructionProgressTests(TestCase):
@@ -104,6 +127,14 @@ class PublicProjectApiTests(TestCase):
         self.assertEqual(response.status_code, 200)
         titles = [item["title"] for item in response.data]
         self.assertEqual(titles, ["پروژه عمومی"])
+
+    def test_project_api_does_not_allow_anonymous_writes(self):
+        response = self.client.post(
+            reverse("project-list"),
+            {"title": "تزریق", "description": "test", "address": "test"},
+            format="json",
+        )
+        self.assertEqual(response.status_code, 405)
 
     def test_completed_project_does_not_expose_progress(self):
         project = Project.objects.create(
