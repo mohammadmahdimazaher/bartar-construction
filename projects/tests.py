@@ -37,3 +37,34 @@ class ConstructionProgressTests(TestCase):
         self.project.construction_status = "completed"
         self.project.save()
         self.assertNotEqual(self.project.construction_status, "in_progress")
+
+
+class ProjectLifecycleRulesTests(TestCase):
+    def test_new_projects_default_to_completed(self):
+        project = Project.objects.create(
+            title="پروژه جدید",
+            description="توضیحات",
+            address="تهران",
+        )
+        self.assertEqual(project.construction_status, "completed")
+
+    def test_projects_not_completed_cannot_be_for_sale(self):
+        project = Project.objects.create(
+            title="پروژه در حال ساخت",
+            description="توضیحات",
+            address="تهران",
+            construction_status="in_progress",
+            is_for_sale=True,
+        )
+        project.refresh_from_db()
+        self.assertFalse(project.is_for_sale)
+
+    def test_completed_projects_can_be_marked_for_sale(self):
+        project = Project.objects.create(
+            title="پروژه تکمیل‌شده",
+            description="توضیحات",
+            address="تهران",
+            construction_status="completed",
+            is_for_sale=True,
+        )
+        self.assertTrue(project.is_for_sale)
