@@ -1,0 +1,66 @@
+name: Project quality checks
+
+on:
+  push:
+    branches:
+      - feature/**
+      - ui-polish-preserve-layout
+  pull_request:
+    branches:
+      - feature/**
+      - ui-polish-preserve-layout
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_DB: startup_db
+          POSTGRES_USER: startup_user
+          POSTGRES_PASSWORD: test_password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U startup_user -d startup_db"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DEBUG: "True"
+      SECRET_KEY: "ci-only-secret-key"
+      DB_NAME: startup_db
+      DB_USER: startup_user
+      DB_PASSWORD: test_password
+      DB_HOST: 127.0.0.1
+      DB_PORT: "5432"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install backend dependencies
+        run: pip install -r requirements.txt
+      - name: Check Django configuration
+        run: python manage.py check
+      - name: Check migration state
+        run: python manage.py makemigrations --check --dry-run
+      - name: Apply migrations
+        run: python manage.py migrate --noinput
+      - name: Run backend tests
+        run: python manage.py test
+
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install frontend dependencies
+        run: npm ci
+      - name: Type-check frontend
+        run: npm run typecheck
