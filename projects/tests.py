@@ -3,6 +3,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
 from django.urls import reverse
 from rest_framework.test import APIClient
+import struct
 
 from .models import ConstructionReport, ConstructionStage, Project, UnitType
 from .validators import validate_3d_model
@@ -15,8 +16,9 @@ class UploadSecurityTests(TestCase):
         with self.assertRaises(ValidationError):
             validate_3d_model(upload)
 
-    def test_valid_glb_header_is_accepted(self):
-        upload = SimpleUploadedFile("model.glb", b"glTF" + b"\x00" * 8)
+    def test_valid_glb_2_header_is_accepted(self):
+        header = struct.pack("<4sII", b"glTF", 2, 12)
+        upload = SimpleUploadedFile("model.glb", header)
         validate_3d_model(upload)
 
     def test_gltf_requires_valid_asset_document(self):
@@ -24,7 +26,7 @@ class UploadSecurityTests(TestCase):
         with self.assertRaises(ValidationError):
             validate_3d_model(upload)
 
-    def test_valid_gltf_asset_document_is_accepted(self):
+    def test_valid_gltf_2_asset_document_is_accepted(self):
         upload = SimpleUploadedFile("model.gltf", b'{"asset": {"version": "2.0"}}')
         validate_3d_model(upload)
 
