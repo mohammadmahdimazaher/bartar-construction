@@ -29,11 +29,18 @@ class ConstructionReportSerializer(serializers.ModelSerializer):
 
 class ProjectSerializer(serializers.ModelSerializer):
     unit_types = UnitTypeSerializer(many=True, read_only=True)
-    construction_stages = ConstructionStageSerializer(many=True, read_only=True)
+    construction_stages = serializers.SerializerMethodField()
     construction_reports = serializers.SerializerMethodField()
     construction_progress = serializers.SerializerMethodField()
 
+    def get_construction_stages(self, obj):
+        if obj.construction_status not in ("in_progress", "paused"):
+            return []
+        return ConstructionStageSerializer(obj.construction_stages.all(), many=True, context=self.context).data
+
     def get_construction_reports(self, obj):
+        if obj.construction_status not in ("in_progress", "paused"):
+            return []
         reports = obj.construction_reports.filter(is_public=True)
         return ConstructionReportSerializer(reports, many=True, context=self.context).data
 
