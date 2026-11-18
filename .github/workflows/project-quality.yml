@@ -43,6 +43,10 @@ jobs:
           cache: pip
       - name: Install backend dependencies
         run: pip install -r requirements.txt
+      - name: Audit Python dependencies
+        run: |
+          pip install pip-audit
+          pip-audit -r requirements.txt
       - name: Check Django configuration
         run: python manage.py check
       - name: Check migration state
@@ -62,6 +66,8 @@ jobs:
           cache: npm
       - name: Install frontend dependencies
         run: npm ci
+      - name: Audit production npm dependencies
+        run: npm audit --omit=dev --audit-level=high
       - name: Type-check frontend
         run: npm run typecheck
       - name: Build frontend
