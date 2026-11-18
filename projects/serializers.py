@@ -39,13 +39,13 @@ class ProjectSerializer(serializers.ModelSerializer):
         return ConstructionStageSerializer(obj.construction_stages.all(), many=True, context=self.context).data
 
     def get_construction_reports(self, obj):
-        if obj.construction_status not in ("in_progress", "paused"):
+        if obj.construction_status not in ("in_progress",):
             return []
         reports = obj.construction_reports.filter(is_public=True)
         return ConstructionReportSerializer(reports, many=True, context=self.context).data
 
     def get_construction_progress(self, obj):
-        if obj.construction_status not in ("in_progress", "paused"):
+        if obj.construction_status not in ("in_progress",):
             return None
         return obj.construction_progress
 
