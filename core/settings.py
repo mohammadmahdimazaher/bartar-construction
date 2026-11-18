@@ -20,11 +20,14 @@ if not SECRET_KEY:
     else:
         raise ImproperlyConfigured("SECRET_KEY must be configured when DEBUG is disabled.")
 
-ALLOWED_HOSTS = [host.strip() for host in os.getenv(
-    "ALLOWED_HOSTS", "localhost,127.0.0.1"
-).split(",") if host.strip()]
-if not DEBUG and not ALLOWED_HOSTS:
-    raise ImproperlyConfigured("ALLOWED_HOSTS must contain at least one host in production.")
+allowed_hosts_env = os.getenv("ALLOWED_HOSTS", "").strip()
+if not allowed_hosts_env and not DEBUG:
+    raise ImproperlyConfigured("ALLOWED_HOSTS must be explicitly configured when DEBUG is disabled.")
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in (allowed_hosts_env or "localhost,127.0.0.1").split(",")
+    if host.strip()
+]
 
 # Applications
 INSTALLED_APPS = [
@@ -174,6 +177,7 @@ else:
     }
 
 if not DEBUG:
+    SECURE_SSL_REDIRECT = os.getenv("SECURE_SSL_REDIRECT", "True").lower() == "true"
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SESSION_COOKIE_SECURE = os.getenv("SESSION_COOKIE_SECURE", "True").lower() == "true"
     CSRF_COOKIE_SECURE = os.getenv("CSRF_COOKIE_SECURE", "True").lower() == "true"
