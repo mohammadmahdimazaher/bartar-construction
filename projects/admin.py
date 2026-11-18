@@ -39,6 +39,16 @@ class UnitTypeInline(admin.StackedInline):
     )
 
 
+
+CONSTRUCTION_STAGE_TEMPLATES = {
+    "concrete": ["آماده‌سازی زمین و گودبرداری", "اجرای فونداسیون", "آرماتوربندی و قالب‌بندی", "بتن‌ریزی ستون‌ها و تیرها", "اجرای سقف‌ها", "دیوارچینی", "اجرای تأسیسات", "نازک‌کاری", "نما و محوطه‌سازی", "تست نهایی و تحویل"],
+    "steel": ["آماده‌سازی زمین و گودبرداری", "اجرای فونداسیون و بولت‌گذاری", "ساخت قطعات فلزی", "نصب ستون‌ها و تیرها", "اتصالات و مهاربندی", "اجرای سقف‌ها", "دیوارچینی", "اجرای تأسیسات", "نازک‌کاری", "نما و محوطه‌سازی", "تست نهایی و تحویل"],
+    "load_bearing": ["آماده‌سازی زمین و گودبرداری", "اجرای فونداسیون", "اجرای دیوارهای باربر", "اجرای کلاف‌ها و اتصالات", "اجرای سقف‌ها", "تیغه‌بندی داخلی", "اجرای تأسیسات", "نازک‌کاری", "نما و محوطه‌سازی", "تست نهایی و تحویل"],
+    "lsf": ["آماده‌سازی زمین و زیرسازی", "اجرای فونداسیون", "ساخت و نصب پروفیل‌های سبک", "مهاربندی و اتصالات", "پوشش دیوارها و سقف", "اجرای تأسیسات", "عایق‌کاری", "نازک‌کاری", "نما و محوطه‌سازی", "تست نهایی و تحویل"],
+    "other": ["آماده‌سازی زمین", "اجرای فونداسیون", "اجرای سازه اصلی", "دیوارچینی و تیغه‌بندی", "اجرای تأسیسات", "نازک‌کاری", "نما و محوطه‌سازی", "تست نهایی و تحویل"],
+}
+
+
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
     list_display = (
@@ -63,6 +73,18 @@ class ProjectAdmin(admin.ModelAdmin):
     empty_value_display = "ثبت نشده"
     save_on_top = True
     inlines = [UnitTypeInline, ConstructionStageInline, ConstructionReportInline]
+
+    def save_related(self, request, form, formsets, change):
+        super().save_related(request, form, formsets, change)
+        project = form.instance
+        if not project.construction_stages.exists():
+            ConstructionStage.objects.bulk_create([
+                ConstructionStage(project=project, title=title, order=index)
+                for index, title in enumerate(
+                    CONSTRUCTION_STAGE_TEMPLATES.get(project.structure_type, CONSTRUCTION_STAGE_TEMPLATES["other"]),
+                    start=1,
+                )
+            ])
 
     @admin.display(description="تصویر")
     def project_image(self, obj):
