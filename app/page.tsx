@@ -430,7 +430,7 @@ export default function Home() {
                               <div className="mega-image-placeholder">B</div>
                             )}
 
-                            {project.is_for_sale && (
+                            {project.construction_status === "completed" && project.is_for_sale && (
                               <span className="mega-sale-label">
                                 قابل فروش
                               </span>
@@ -629,17 +629,15 @@ export default function Home() {
                           </div>
                         )}
 
-                        {project.is_for_sale && (
+                        {project.construction_status === "completed" && project.is_for_sale && (
                           <span className="project-sale-label">
                             قابل فروش
                           </span>
                         )}
-                        {project.construction_status && project.construction_status !== "planning" && project.construction_status !== "pending" && (
+                        {project.construction_status && (
                           <span className={`project-construction-label status-${project.construction_status}`}>
                             {project.construction_status === "in_progress" ? "در حال ساخت" :
-                              project.construction_status === "paused" ? "متوقف‌شده" :
-                              project.construction_status === "completed" ? "تکمیل‌شده" :
-                              project.construction_status === "delivered" ? "تحویل‌شده" : "بایگانی‌شده"}
+                              project.construction_status === "completed" ? "اتمام ساخت" : "به‌زودی"}
                           </span>
                         )}
                         {project.construction_status === "in_progress" && typeof project.construction_progress === "number" && (
