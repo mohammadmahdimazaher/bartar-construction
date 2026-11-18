@@ -1,5 +1,9 @@
 from django.test import TestCase
-from .models import ConstructionStage, Project
+from django.urls import reverse
+from rest_framework.test import APIClient
+
+from .models import ConstructionReport, ConstructionStage, Project, UnitType
+from .views import UnitTypeViewSet
 
 
 class ConstructionProgressTests(TestCase):
@@ -59,6 +63,17 @@ class ProjectLifecycleRulesTests(TestCase):
         project.refresh_from_db()
         self.assertFalse(project.is_for_sale)
 
+    def test_upcoming_projects_cannot_be_for_sale(self):
+        project = Project.objects.create(
+            title="پروژه آینده",
+            description="توضیحات",
+            address="تهران",
+            construction_status="upcoming",
+            is_for_sale=True,
+        )
+        project.refresh_from_db()
+        self.assertFalse(project.is_for_sale)
+
     def test_completed_projects_can_be_marked_for_sale(self):
         project = Project.objects.create(
             title="پروژه تکمیل‌شده",
@@ -68,3 +83,82 @@ class ProjectLifecycleRulesTests(TestCase):
             is_for_sale=True,
         )
         self.assertTrue(project.is_for_sale)
+
+
+class PublicProjectApiTests(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+
+    def test_unpublished_projects_are_not_publicly_listed(self):
+        Project.objects.create(
+            title="پروژه عمومی", description="توضیحات", address="تهران",
+            is_published=True,
+        )
+        Project.objects.create(
+            title="پروژه خصوصی", description="توضیحات", address="تهران",
+            is_published=False,
+        )
+
+        response = self.client.get(reverse("project-list"))
+
+        self.assertEqual(response.status_code, 200)
+        titles = [item["title"] for item in response.data]
+        self.assertEqual(titles, ["پروژه عمومی"])
+
+    def test_completed_project_does_not_expose_progress(self):
+        project = Project.objects.create(
+            title="پروژه تکمیل‌شده", description="توضیحات", address="تهران",
+            construction_status="completed",
+        )
+        ConstructionStage.objects.create(
+            project=project, title="فونداسیون", progress=75,
+        )
+
+        response = self.client.get(reverse("project-list"))
+
+        self.assertEqual(response.status_code, 200)
+        item = next(item for item in response.data if item["id"] == project.id)
+        self.assertIsNone(item["construction_progress"])
+        self.assertEqual(item["construction_stages"], [])
+
+    def test_only_public_construction_reports_are_exposed(self):
+        project = Project.objects.create(
+            title="پروژه در حال ساخت", description="توضیحات", address="تهران",
+            construction_status="in_progress",
+        )
+        ConstructionReport.objects.create(
+            project=project, title="گزارش عمومی", description="متن",
+            report_date="2026-01-01", is_public=True,
+        )
+        ConstructionReport.objects.create(
+            project=project, title="گزارش داخلی", description="متن",
+            report_date="2026-01-02", is_public=False,
+        )
+
+        response = self.client.get(reverse("project-list"))
+
+        self.assertEqual(response.status_code, 200)
+        item = next(item for item in response.data if item["id"] == project.id)
+        report_titles = [report["title"] for report in item["construction_reports"]]
+        self.assertEqual(report_titles, ["گزارش عمومی"])
+
+    def test_unit_type_queryset_excludes_unpublished_projects(self):
+        public_project = Project.objects.create(
+            title="عمومی", description="توضیحات", address="تهران",
+            is_published=True,
+        )
+        private_project = Project.objects.create(
+            title="خصوصی", description="توضیحات", address="تهران",
+            is_published=False,
+        )
+        public_unit = UnitType.objects.create(
+            project=public_project, direction="north", description="واحد عمومی",
+        )
+        private_unit = UnitType.objects.create(
+            project=private_project, direction="south", description="واحد خصوصی",
+        )
+
+        queryset = UnitTypeViewSet().get_queryset()
+
+        self.assertTrue(queryset.filter(pk=public_unit.pk).exists())
+        self.assertFalse(queryset.filter(pk=private_unit.pk).exists())
