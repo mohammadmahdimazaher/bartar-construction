@@ -93,14 +93,15 @@ class ProjectAdmin(admin.ModelAdmin):
                 "is_for_sale",
                 "project_type",
                 "structure_type",
-                "construction_status",
+                "project_type",
+                "structure_type",
                 "is_published",
                 "construction_start_date",
                 "estimated_completion_date",
             )
         }),
         ("مدیریت پیشرفت و وضعیت اجرایی", {
-            "fields": ("construction_status", "construction_start_date", "estimated_completion_date", "is_published"),
+            "fields": ("construction_status", "construction_start_date", "estimated_completion_date"),
         }),
         ("مشخصات کلی ساختمان", {
             "classes": ("collapse",),
