@@ -136,7 +136,7 @@ class PublicProjectApiTests(TestCase):
             {"title": "تزریق", "description": "test", "address": "test"},
             format="json",
         )
-        self.assertEqual(response.status_code, 405)
+        self.assertEqual(response.status_code, 403)
 
     def test_completed_project_does_not_expose_progress(self):
         project = Project.objects.create(
