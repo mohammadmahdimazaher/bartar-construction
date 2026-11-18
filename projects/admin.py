@@ -1,7 +1,22 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import Project, UnitType
+from .models import ConstructionReport, ConstructionStage, Project, UnitType
+
+
+
+class ConstructionStageInline(admin.TabularInline):
+    model = ConstructionStage
+    extra = 0
+    fields = ("order", "title", "weight", "progress", "is_completed", "start_date", "end_date", "notes")
+    ordering = ("order",)
+
+
+class ConstructionReportInline(admin.StackedInline):
+    model = ConstructionReport
+    extra = 0
+    fields = ("stage", "title", "description", "report_date", "image", "is_public")
+    ordering = ("-report_date",)
 
 
 class UnitTypeInline(admin.StackedInline):
@@ -33,10 +48,11 @@ class ProjectAdmin(admin.ModelAdmin):
         "total_units",
         "floors_count",
         "sale_status",
+        "construction_status",
         "created_at",
     )
     list_display_links = ("project_title",)
-    list_filter = ("is_for_sale", "has_elevator", "has_basement", "has_pool", "has_roof_garden", "has_game_room")
+    list_filter = ("is_for_sale", "construction_status", "project_type", "structure_type", "is_published", "has_elevator", "has_basement", "has_pool", "has_roof_garden", "has_game_room")
     list_editable = ("address",)
     date_hierarchy = "created_at"
     list_select_related = ()
@@ -46,7 +62,7 @@ class ProjectAdmin(admin.ModelAdmin):
     list_per_page = 15
     empty_value_display = "ثبت نشده"
     save_on_top = True
-    inlines = [UnitTypeInline]
+    inlines = [UnitTypeInline, ConstructionStageInline, ConstructionReportInline]
 
     @admin.display(description="تصویر")
     def project_image(self, obj):
@@ -57,6 +73,10 @@ class ProjectAdmin(admin.ModelAdmin):
     @admin.display(description="نام پروژه", ordering="title")
     def project_title(self, obj):
         return obj.title
+
+    @admin.display(description="وضعیت اجرایی", ordering="construction_status")
+    def construction_status(self, obj):
+        return obj.get_construction_status_display()
 
     @admin.display(description="وضعیت فروش", boolean=True, ordering="is_for_sale")
     def sale_status(self, obj):
@@ -71,7 +91,16 @@ class ProjectAdmin(admin.ModelAdmin):
                 "main_image",
                 "model_3d",
                 "is_for_sale",
+                "project_type",
+                "structure_type",
+                "construction_status",
+                "is_published",
+                "construction_start_date",
+                "estimated_completion_date",
             )
+        }),
+        ("مدیریت پیشرفت و وضعیت اجرایی", {
+            "fields": ("construction_status", "construction_start_date", "estimated_completion_date", "is_published"),
         }),
         ("مشخصات کلی ساختمان", {
             "classes": ("collapse",),
