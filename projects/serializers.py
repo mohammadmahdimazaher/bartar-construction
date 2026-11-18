@@ -34,7 +34,7 @@ class ProjectSerializer(serializers.ModelSerializer):
     construction_progress = serializers.SerializerMethodField()
 
     def get_construction_stages(self, obj):
-        if obj.construction_status not in ("in_progress", "paused"):
+        if obj.construction_status not in ("in_progress",):
             return []
         return ConstructionStageSerializer(obj.construction_stages.all(), many=True, context=self.context).data
 
