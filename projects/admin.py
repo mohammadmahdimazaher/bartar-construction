@@ -74,6 +74,9 @@ class ProjectAdmin(admin.ModelAdmin):
     save_on_top = True
     inlines = [UnitTypeInline, ConstructionStageInline, ConstructionReportInline]
 
+    class Media:
+        js = ("projects/project_admin.js",)
+
     def save_related(self, request, form, formsets, change):
         super().save_related(request, form, formsets, change)
         project = form.instance
