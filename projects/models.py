@@ -149,13 +149,9 @@ class Project(models.Model):
         ("other", "سایر"),
     ]
     CONSTRUCTION_STATUSES = [
-        ("planning", "در حال برنامه‌ریزی"),
-        ("pending", "در انتظار شروع"),
+        ("upcoming", "به‌زودی"),
         ("in_progress", "در حال ساخت"),
-        ("paused", "متوقف‌شده"),
-        ("completed", "تکمیل‌شده"),
-        ("delivered", "تحویل‌شده"),
-        ("archived", "بایگانی‌شده"),
+        ("completed", "اتمام ساخت"),
     ]
 
     project_type = models.CharField(
@@ -167,7 +163,7 @@ class Project(models.Model):
         verbose_name="نوع سیستم سازه‌ای",
     )
     construction_status = models.CharField(
-        max_length=20, choices=CONSTRUCTION_STATUSES, default="planning",
+        max_length=20, choices=CONSTRUCTION_STATUSES, default="completed",
         db_index=True, verbose_name="وضعیت اجرایی",
     )
     is_published = models.BooleanField(
@@ -189,6 +185,12 @@ class Project(models.Model):
         return round(
             sum(stage.progress * stage.weight for stage in stages) / total_weight
         )
+
+    def save(self, *args, **kwargs):
+        # A project can only be offered for sale after construction is complete.
+        if self.construction_status != "completed":
+            self.is_for_sale = False
+        super().save(*args, **kwargs)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
