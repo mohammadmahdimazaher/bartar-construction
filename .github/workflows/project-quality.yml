@@ -64,3 +64,5 @@ jobs:
         run: npm ci
       - name: Type-check frontend
         run: npm run typecheck
+      - name: Build frontend
+        run: npm run build
