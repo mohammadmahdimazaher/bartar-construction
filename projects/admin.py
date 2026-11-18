@@ -77,7 +77,7 @@ class ProjectAdmin(admin.ModelAdmin):
     def save_related(self, request, form, formsets, change):
         super().save_related(request, form, formsets, change)
         project = form.instance
-        if not project.construction_stages.exists():
+        if not change and not project.construction_stages.exists():
             ConstructionStage.objects.bulk_create([
                 ConstructionStage(project=project, title=title, order=index)
                 for index, title in enumerate(
