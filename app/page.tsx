@@ -15,6 +15,8 @@ type Project = {
   address?: string;
   main_image?: string | null;
   is_for_sale?: boolean;
+  construction_status?: string;
+  construction_progress?: number | null;
 };
 
 type Section = {
@@ -631,6 +633,17 @@ export default function Home() {
                           <span className="project-sale-label">
                             قابل فروش
                           </span>
+                        )}
+                        {project.construction_status && project.construction_status !== "planning" && project.construction_status !== "pending" && (
+                          <span className={`project-construction-label status-${project.construction_status}`}>
+                            {project.construction_status === "in_progress" ? "در حال ساخت" :
+                              project.construction_status === "paused" ? "متوقف‌شده" :
+                              project.construction_status === "completed" ? "تکمیل‌شده" :
+                              project.construction_status === "delivered" ? "تحویل‌شده" : "بایگانی‌شده"}
+                          </span>
+                        )}
+                        {project.construction_status === "in_progress" && typeof project.construction_progress === "number" && (
+                          <span className="project-construction-progress">{project.construction_progress.toLocaleString("fa-IR")}٪ پیشرفت</span>
                         )}
 
                         <div className="p-card-image-caption">
